@@ -890,6 +890,73 @@ body {
 }
 
 /* ===================================
+   CURSO - BAT PASO A PASO
+   =================================== */
+
+.curso-bat {
+  margin-top: var(--spacing-xl);
+  background: var(--color-bg-light);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  border-left: 6px solid var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+/* Títulos */
+.curso-bat h3 {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-md);
+}
+.curso-bat h4 {
+  margin-top: var(--spacing-lg);
+  color: var(--color-primary);
+  font-size: 1.3rem;
+}
+
+/* Párrafos */
+.curso-bat p {
+  line-height: 1.7;
+  color: var(--color-gray);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Listas */
+.curso-bat ul {
+  margin-left: 1.2rem;
+  margin-bottom: var(--spacing-md);
+}
+.curso-bat li {
+  margin-bottom: 0.5rem;
+}
+
+/* Bloques de código */
+.curso-bat pre {
+  background: var(--color-bg-light);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-gray-light);
+  overflow-x: auto;
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* ============================ 
+BLOQUEO DE COPIA - TEXTO BAT
+============================ */
+
+.no-copy {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+}
+.no-copy::selection {
+  background: transparent;
+}
+
+/* ===================================
    JUEGO - STATUS Y FEATURES
    =================================== */
 

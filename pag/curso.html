@@ -1,387 +1,1163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Curso completo de programación Batch desde nivel básico hasta avanzado. Aprende scripting en Windows paso a paso.">
-    <meta name="keywords" content="curso batch, programación batch, scripting windows, cmd, comandos batch">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Curso completo de programación Batch desde nivel básico hasta avanzado. Aprende scripting en Windows paso a paso."
+    />
+    <meta
+      name="keywords"
+      content="curso batch, programación batch, scripting windows, cmd, comandos batch"
+    />
     <title>Curso de Programación Batch | Sistemas Informáticos</title>
-    <link rel="stylesheet" href="../css/style.css"/>
-</head>
-<body>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
     <!-- Navegación -->
     <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <span class="logo-icon">💻</span>
-                <span class="logo-text">Sistemas Informáticos</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">Inicio</a></li>
-                <li><a href="/pag/historia.html" class="nav-link">Historia</a></li>
-                <li><a href="/pag/curso.html" class="nav-link active" aria-current="page">Curso BAT</a></li>
-                <li><a href="/pag/juego.html" class="nav-link">Juego</a></li>
-            </ul>
-        </nav>
+      <nav class="nav-container">
+        <div class="logo">
+          <span class="logo-icon">💻</span>
+          <span class="logo-text">Sistemas Informáticos</span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">Inicio</a></li>
+          <li><a href="/pag/historia.html" class="nav-link">Historia</a></li>
+          <li>
+            <a
+              href="/pag/curso.html"
+              class="nav-link active"
+              aria-current="page"
+              >Curso BAT</a
+            >
+          </li>
+          <li><a href="/pag/juego.html" class="nav-link">Juego</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <!-- Hero de la página -->
-        <section class="page-hero page-hero-curso">
-            <div class="container">
-                <h1 class="page-hero-title">Curso de Programación Básico Batch</h1>
-                <p class="page-hero-subtitle">
-                    ¡Aprende con nosotros y nuestra pequeña guía a través de ejemplos básicos de 
-                    programación Batch que podrás desarrollar y emplear!   
+      <!-- Hero de la página -->
+      <section class="page-hero page-hero-curso">
+        <div class="container">
+          <h1 class="page-hero-title">Curso Básico de Programación Batch</h1>
+          <p class="page-hero-subtitle">
+            ¡Aprende con nosotros programación Batch!
+          </p>
+        </div>
+      </section>
+
+      <!-- Introducción al curso -->
+      <section class="course-intro">
+        <div class="container">
+          <div class="intro-content">
+            <h2 class="intro-title">¿Qué aprenderás?</h2>
+            <p class="intro-text">
+              Aquí podrás encontrar una pequeña guía con cursos adaptados a
+              nivel básico, intermedio y avanzado, además de algunos ejemplos
+              guiados y explicados para aprender a programar archivos .bat
+              ejecutable en windows que nos ayudarán a automatizar tareas y
+              optimizar nuestro flujo de trabajo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nivel Básico -->
+      <section class="course-level level-basico">
+        <div class="container">
+          <div class="level-header">
+            <div class="level-badge badge-basico">Nivel 1</div>
+            <h2 class="level-title">Básico</h2>
+            <p class="level-subtitle">
+              Fundamentos esenciales de Batch scripting
+            </p>
+          </div>
+
+          <div class="level-content">
+            <div class="level-intro">
+              <p class="level-description">
+                Comienza tu viaje en la programación Batch aprendiendo los
+                comandos fundamentales, la estructura básica de scripts y las
+                operaciones esenciales para interactuar con el sistema.
+              </p>
+            </div>
+
+            <div class="topics-grid">
+              <!-- Tema 1 -->
+              <article class="topic-card">
+                <div class="topic-icon">📝</div>
+                <h3 class="topic-title">Introducción y configuración</h3>
+                <p class="topic-description">
+                  Aprende qué es un archivo .bat, cómo crear tu primer script y
+                  configurar el entorno de trabajo en el símbolo del sistema de
+                  Windows.
                 </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> Qué es un archivo Batch
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Crear y ejecutar scripts
+                  </li>
+                  <li><span class="list-icon">→</span> Estructura básica</li>
+                </ul>
+              </article>
+
+              <!-- Tema 2 -->
+              <article class="topic-card">
+                <div class="topic-icon">⚙️</div>
+                <h3 class="topic-title">Comandos básicos</h3>
+                <p class="topic-description">
+                  Domina los comandos esenciales para navegar, visualizar
+                  información y controlar el flujo de ejecución de tus scripts.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> <code>@echo off</code>,
+                    <code>echo</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>pause</code>,
+                    <code>cls</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>rem</code> y
+                    comentarios
+                  </li>
+                </ul>
+              </article>
+
+              <!-- Tema 3 -->
+              <article class="topic-card">
+                <div class="topic-icon">📁</div>
+                <h3 class="topic-title">Gestión de archivos</h3>
+                <p class="topic-description">
+                  Aprende a manipular archivos y directorios: crear, copiar,
+                  mover, eliminar y listar contenidos del sistema de archivos.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> <code>dir</code>,
+                    <code>cd</code>, <code>mkdir</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>copy</code>,
+                    <code>move</code>, <code>del</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>type</code>,
+                    <code>ren</code>
+                  </li>
+                </ul>
+              </article>
+
+              <!-- Tema 4 -->
+              <article class="topic-card">
+                <div class="topic-icon">🔤</div>
+                <h3 class="topic-title">Variables simples</h3>
+                <p class="topic-description">
+                  Introduce el concepto de variables para almacenar datos,
+                  aceptar entradas del usuario y hacer tus scripts más
+                  dinámicos.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> <code>set</code> para
+                    definir variables
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>set /p</code> para
+                    entrada de usuario
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Uso de
+                    <code>%variable%</code>
+                  </li>
+                </ul>
+              </article>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Introducción al curso -->
-        <section class="course-intro">
-            <div class="container">
-                <div class="intro-content">
-                    <h2 class="intro-title">¿Qué aprenderás?</h2>
-                    <p class="intro-text">
-                        Aquí podrás encontrar una pequeña guía con cursos adaptados a nivel básico, 
-                        intermedio y avanzado, además de algunos ejemplos guiados y explicados para 
-                        aprender a programar archivos .bat ejecutable en windows que nos ayudarán a automatizar
-                        tareas y optimizar nuestro flujo de trabajo. 
-                    </p>
-                </div>
+      <!-- Nivel Intermedio -->
+      <section class="course-level level-intermedio">
+        <div class="container">
+          <div class="level-header">
+            <div class="level-badge badge-intermedio">Nivel 2</div>
+            <h2 class="level-title">Intermedio</h2>
+            <p class="level-subtitle">
+              Control de flujo y lógica de programación
+            </p>
+          </div>
+
+          <div class="level-content">
+            <div class="level-intro">
+              <p class="level-description">
+                Eleva tus habilidades incorporando estructuras de control,
+                condicionales y bucles para crear scripts más inteligentes y
+                automatizaciones complejas.
+              </p>
             </div>
-        </section>
 
-        <!-- Nivel Básico -->
-        <section class="course-level level-basico">
-            <div class="container">
-                <div class="level-header">
-                    <div class="level-badge badge-basico">Nivel 1</div>
-                    <h2 class="level-title">Básico</h2>
-                    <p class="level-subtitle">Fundamentos esenciales de Batch scripting</p>
-                </div>
+            <div class="topics-grid">
+              <!-- Tema 1 -->
+              <article class="topic-card">
+                <div class="topic-icon">🔀</div>
+                <h3 class="topic-title">Condicionales IF</h3>
+                <p class="topic-description">
+                  Implementa lógica condicional para que tus scripts tomen
+                  decisiones basadas en comparaciones, existencia de archivos y
+                  otros criterios.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> Sintaxis de <code>if</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Comparadores:
+                    <code>==</code>, <code>neq</code>, <code>lss</code>,
+                    <code>gtr</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>if exist</code> y
+                    <code>if defined</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>else</code> y
+                    condicionales anidados
+                  </li>
+                </ul>
+              </article>
 
-                <div class="level-content">
-                    <div class="level-intro">
-                        <p class="level-description">
-                            Comienza tu viaje en la programación Batch aprendiendo los comandos fundamentales, 
-                            la estructura básica de scripts y las operaciones esenciales para interactuar con el sistema.
-                        </p>
-                    </div>
+              <!-- Tema 2 -->
+              <article class="topic-card">
+                <div class="topic-icon">🔁</div>
+                <h3 class="topic-title">Bucles FOR</h3>
+                <p class="topic-description">
+                  Domina los bucles para iterar sobre archivos, directorios,
+                  rangos numéricos y conjuntos de datos, automatizando tareas
+                  repetitivas.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span>
+                    <code>for %%variable in (conjunto)</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>for /L</code> -
+                    bucles numéricos
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>for /R</code> -
+                    recursión en directorios
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>for /F</code> -
+                    procesamiento de archivos
+                  </li>
+                </ul>
+              </article>
 
-                    <div class="topics-grid">
-                        <!-- Tema 1 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">📝</div>
-                            <h3 class="topic-title">Introducción y configuración</h3>
-                            <p class="topic-description">
-                                Aprende qué es un archivo .bat, cómo crear tu primer script y configurar 
-                                el entorno de trabajo en el símbolo del sistema de Windows.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> Qué es un archivo Batch</li>
-                                <li><span class="list-icon">→</span> Crear y ejecutar scripts</li>
-                                <li><span class="list-icon">→</span> Estructura básica</li>
-                            </ul>
-                        </article>
+              <!-- Tema 3 -->
+              <article class="topic-card">
+                <div class="topic-icon">🎯</div>
+                <h3 class="topic-title">GOTO y etiquetas</h3>
+                <p class="topic-description">
+                  Aprende a controlar el flujo de ejecución saltando a secciones
+                  específicas del código y creando menús interactivos.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> Definir etiquetas
+                    <code>:label</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Comando <code>goto</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Crear menús interactivos
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Control de errores básico
+                  </li>
+                </ul>
+              </article>
 
-                        <!-- Tema 2 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">⚙️</div>
-                            <h3 class="topic-title">Comandos básicos</h3>
-                            <p class="topic-description">
-                                Domina los comandos esenciales para navegar, visualizar información y 
-                                controlar el flujo de ejecución de tus scripts.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> <code>@echo off</code>, <code>echo</code></li>
-                                <li><span class="list-icon">→</span> <code>pause</code>, <code>cls</code></li>
-                                <li><span class="list-icon">→</span> <code>rem</code> y comentarios</li>
-                            </ul>
-                        </article>
+              <!-- Tema 4 -->
+              <article class="topic-card">
+                <div class="topic-icon">🔧</div>
+                <h3 class="topic-title">Parámetros y argumentos</h3>
+                <p class="topic-description">
+                  Haz tus scripts más versátiles aceptando parámetros desde la
+                  línea de comandos y procesando múltiples entradas.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> Variables <code>%1</code>,
+                    <code>%2</code>, ..., <code>%9</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>%*</code> para todos
+                    los parámetros
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>shift</code> para
+                    desplazar argumentos
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Validación de parámetros
+                  </li>
+                </ul>
+              </article>
 
-                        <!-- Tema 3 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">📁</div>
-                            <h3 class="topic-title">Gestión de archivos</h3>
-                            <p class="topic-description">
-                                Aprende a manipular archivos y directorios: crear, copiar, mover, 
-                                eliminar y listar contenidos del sistema de archivos.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> <code>dir</code>, <code>cd</code>, <code>mkdir</code></li>
-                                <li><span class="list-icon">→</span> <code>copy</code>, <code>move</code>, <code>del</code></li>
-                                <li><span class="list-icon">→</span> <code>type</code>, <code>ren</code></li>
-                            </ul>
-                        </article>
-
-                        <!-- Tema 4 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">🔤</div>
-                            <h3 class="topic-title">Variables simples</h3>
-                            <p class="topic-description">
-                                Introduce el concepto de variables para almacenar datos, aceptar 
-                                entradas del usuario y hacer tus scripts más dinámicos.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> <code>set</code> para definir variables</li>
-                                <li><span class="list-icon">→</span> <code>set /p</code> para entrada de usuario</li>
-                                <li><span class="list-icon">→</span> Uso de <code>%variable%</code></li>
-                            </ul>
-                        </article>
-                    </div>
-                </div>
+              <!-- Tema 5 -->
+              <article class="topic-card">
+                <div class="topic-icon">📊</div>
+                <h3 class="topic-title">Redirección y pipelines</h3>
+                <p class="topic-description">
+                  Manipula la entrada y salida de comandos para crear workflows
+                  complejos y procesar información de múltiples fuentes.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> Redirección
+                    <code>&gt;</code>, <code>&gt;&gt;</code>, <code>&lt;</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Pipelines con
+                    <code>|</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>nul</code> para
+                    suprimir salida
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>2&gt;&1</code> manejo
+                    de errores
+                  </li>
+                </ul>
+              </article>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Nivel Intermedio -->
-        <section class="course-level level-intermedio">
-            <div class="container">
-                <div class="level-header">
-                    <div class="level-badge badge-intermedio">Nivel 2</div>
-                    <h2 class="level-title">Intermedio</h2>
-                    <p class="level-subtitle">Control de flujo y lógica de programación</p>
-                </div>
+      <!-- Nivel Avanzado -->
+      <section class="course-level level-avanzado">
+        <div class="container">
+          <div class="level-header">
+            <div class="level-badge badge-avanzado">Nivel 3</div>
+            <h2 class="level-title">Avanzado</h2>
+            <p class="level-subtitle">
+              Técnicas profesionales y optimización de scripts
+            </p>
+          </div>
 
-                <div class="level-content">
-                    <div class="level-intro">
-                        <p class="level-description">
-                            Eleva tus habilidades incorporando estructuras de control, condicionales y bucles 
-                            para crear scripts más inteligentes y automatizaciones complejas.
-                        </p>
-                    </div>
-
-                    <div class="topics-grid">
-                        <!-- Tema 1 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">🔀</div>
-                            <h3 class="topic-title">Condicionales IF</h3>
-                            <p class="topic-description">
-                                Implementa lógica condicional para que tus scripts tomen decisiones 
-                                basadas en comparaciones, existencia de archivos y otros criterios.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> Sintaxis de <code>if</code></li>
-                                <li><span class="list-icon">→</span> Comparadores: <code>==</code>, <code>neq</code>, <code>lss</code>, <code>gtr</code></li>
-                                <li><span class="list-icon">→</span> <code>if exist</code> y <code>if defined</code></li>
-                                <li><span class="list-icon">→</span> <code>else</code> y condicionales anidados</li>
-                            </ul>
-                        </article>
-
-                        <!-- Tema 2 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">🔁</div>
-                            <h3 class="topic-title">Bucles FOR</h3>
-                            <p class="topic-description">
-                                Domina los bucles para iterar sobre archivos, directorios, rangos numéricos 
-                                y conjuntos de datos, automatizando tareas repetitivas.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> <code>for %%variable in (conjunto)</code></li>
-                                <li><span class="list-icon">→</span> <code>for /L</code> - bucles numéricos</li>
-                                <li><span class="list-icon">→</span> <code>for /R</code> - recursión en directorios</li>
-                                <li><span class="list-icon">→</span> <code>for /F</code> - procesamiento de archivos</li>
-                            </ul>
-                        </article>
-
-                        <!-- Tema 3 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">🎯</div>
-                            <h3 class="topic-title">GOTO y etiquetas</h3>
-                            <p class="topic-description">
-                                Aprende a controlar el flujo de ejecución saltando a secciones específicas 
-                                del código y creando menús interactivos.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> Definir etiquetas <code>:label</code></li>
-                                <li><span class="list-icon">→</span> Comando <code>goto</code></li>
-                                <li><span class="list-icon">→</span> Crear menús interactivos</li>
-                                <li><span class="list-icon">→</span> Control de errores básico</li>
-                            </ul>
-                        </article>
-
-                        <!-- Tema 4 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">🔧</div>
-                            <h3 class="topic-title">Parámetros y argumentos</h3>
-                            <p class="topic-description">
-                                Haz tus scripts más versátiles aceptando parámetros desde la línea de 
-                                comandos y procesando múltiples entradas.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> Variables <code>%1</code>, <code>%2</code>, ..., <code>%9</code></li>
-                                <li><span class="list-icon">→</span> <code>%*</code> para todos los parámetros</li>
-                                <li><span class="list-icon">→</span> <code>shift</code> para desplazar argumentos</li>
-                                <li><span class="list-icon">→</span> Validación de parámetros</li>
-                            </ul>
-                        </article>
-
-                        <!-- Tema 5 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">📊</div>
-                            <h3 class="topic-title">Redirección y pipelines</h3>
-                            <p class="topic-description">
-                                Manipula la entrada y salida de comandos para crear workflows complejos 
-                                y procesar información de múltiples fuentes.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> Redirección <code>&gt;</code>, <code>&gt;&gt;</code>, <code>&lt;</code></li>
-                                <li><span class="list-icon">→</span> Pipelines con <code>|</code></li>
-                                <li><span class="list-icon">→</span> <code>nul</code> para suprimir salida</li>
-                                <li><span class="list-icon">→</span> <code>2&gt;&1</code> manejo de errores</li>
-                            </ul>
-                        </article>
-                    </div>
-                </div>
+          <div class="level-content">
+            <div class="level-intro">
+              <p class="level-description">
+                Domina técnicas avanzadas para crear scripts robustos,
+                eficientes y profesionales. Aprende sobre funciones, expansión
+                retardada, manipulación de cadenas y automatización compleja de
+                sistemas.
+              </p>
             </div>
-        </section>
 
-        <!-- Nivel Avanzado -->
-        <section class="course-level level-avanzado">
-            <div class="container">
-                <div class="level-header">
-                    <div class="level-badge badge-avanzado">Nivel 3</div>
-                    <h2 class="level-title">Avanzado</h2>
-                    <p class="level-subtitle">Técnicas profesionales y optimización de scripts</p>
-                </div>
+            <div class="topics-grid">
+              <!-- Tema 1 -->
+              <article class="topic-card">
+                <div class="topic-icon">🎓</div>
+                <h3 class="topic-title">Funciones y subrutinas</h3>
+                <p class="topic-description">
+                  Organiza tu código en funciones reutilizables con
+                  <code>call</code>, crea bibliotecas de scripts y estructura
+                  proyectos complejos.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> <code>call :function</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Paso de parámetros a
+                    funciones
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Variables locales con
+                    <code>setlocal</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> <code>endlocal</code> y
+                    ámbito de variables
+                  </li>
+                </ul>
+              </article>
 
-                <div class="level-content">
-                    <div class="level-intro">
-                        <p class="level-description">
-                            Domina técnicas avanzadas para crear scripts robustos, eficientes y profesionales. 
-                            Aprende sobre funciones, expansión retardada, manipulación de cadenas y 
-                            automatización compleja de sistemas.
-                        </p>
-                    </div>
+              <!-- Tema 2 -->
+              <article class="topic-card">
+                <div class="topic-icon">⚡</div>
+                <h3 class="topic-title">Expansión retardada</h3>
+                <p class="topic-description">
+                  Domina <code>enabledelayedexpansion</code> para manipular
+                  variables dentro de bucles y bloques de código de forma
+                  dinámica y precisa.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span>
+                    <code>setlocal enabledelayedexpansion</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Sintaxis
+                    <code>!variable!</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Uso en bucles y
+                    condicionales
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Casos prácticos avanzados
+                  </li>
+                </ul>
+              </article>
 
-                    <div class="topics-grid">
-                        <!-- Tema 1 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">🎓</div>
-                            <h3 class="topic-title">Funciones y subrutinas</h3>
-                            <p class="topic-description">
-                                Organiza tu código en funciones reutilizables con <code>call</code>, 
-                                crea bibliotecas de scripts y estructura proyectos complejos.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> <code>call :function</code></li>
-                                <li><span class="list-icon">→</span> Paso de parámetros a funciones</li>
-                                <li><span class="list-icon">→</span> Variables locales con <code>setlocal</code></li>
-                                <li><span class="list-icon">→</span> <code>endlocal</code> y ámbito de variables</li>
-                            </ul>
-                        </article>
+              <!-- Tema 3 -->
+              <article class="topic-card">
+                <div class="topic-icon">✂️</div>
+                <h3 class="topic-title">Manipulación de cadenas</h3>
+                <p class="topic-description">
+                  Realiza operaciones avanzadas con texto: extracción de
+                  subcadenas, reemplazo de caracteres, conversión de casos y
+                  parsing complejo.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> Subcadenas
+                    <code>%var:~inicio,longitud%</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Búsqueda y reemplazo
+                    <code>%var:old=new%</code>
+                  </li>
+                  <li><span class="list-icon">→</span> Longitud de cadenas</li>
+                  <li>
+                    <span class="list-icon">→</span> Concatenación y
+                    tokenización
+                  </li>
+                </ul>
+              </article>
 
-                        <!-- Tema 2 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">⚡</div>
-                            <h3 class="topic-title">Expansión retardada</h3>
-                            <p class="topic-description">
-                                Domina <code>enabledelayedexpansion</code> para manipular variables dentro 
-                                de bucles y bloques de código de forma dinámica y precisa.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> <code>setlocal enabledelayedexpansion</code></li>
-                                <li><span class="list-icon">→</span> Sintaxis <code>!variable!</code></li>
-                                <li><span class="list-icon">→</span> Uso en bucles y condicionales</li>
-                                <li><span class="list-icon">→</span> Casos prácticos avanzados</li>
-                            </ul>
-                        </article>
+              <!-- Tema 4 -->
+              <article class="topic-card">
+                <div class="topic-icon">🧮</div>
+                <h3 class="topic-title">Operaciones matemáticas</h3>
+                <p class="topic-description">
+                  Implementa cálculos aritméticos, operaciones lógicas y
+                  expresiones matemáticas complejas en tus scripts.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> <code>set /a</code> para
+                    aritmética
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Operadores: <code>+</code>,
+                    <code>-</code>, <code>*</code>, <code>/</code>,
+                    <code>%</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Operaciones bit a bit
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Expresiones complejas y
+                    precedencia
+                  </li>
+                </ul>
+              </article>
 
-                        <!-- Tema 3 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">✂️</div>
-                            <h3 class="topic-title">Manipulación de cadenas</h3>
-                            <p class="topic-description">
-                                Realiza operaciones avanzadas con texto: extracción de subcadenas, 
-                                reemplazo de caracteres, conversión de casos y parsing complejo.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> Subcadenas <code>%var:~inicio,longitud%</code></li>
-                                <li><span class="list-icon">→</span> Búsqueda y reemplazo <code>%var:old=new%</code></li>
-                                <li><span class="list-icon">→</span> Longitud de cadenas</li>
-                                <li><span class="list-icon">→</span> Concatenación y tokenización</li>
-                            </ul>
-                        </article>
+              <!-- Tema 5 -->
+              <article class="topic-card">
+                <div class="topic-icon">🔒</div>
+                <h3 class="topic-title">Gestión de errores</h3>
+                <p class="topic-description">
+                  Crea scripts robustos con manejo de errores profesional usando
+                  <code>errorlevel</code>, validaciones y estrategias de
+                  recuperación.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> Código de salida
+                    <code>%errorlevel%</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span>
+                    <code>if errorlevel</code> condicionales
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Manejo de excepciones
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Logging y debugging
+                    avanzado
+                  </li>
+                </ul>
+              </article>
 
-                        <!-- Tema 4 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">🧮</div>
-                            <h3 class="topic-title">Operaciones matemáticas</h3>
-                            <p class="topic-description">
-                                Implementa cálculos aritméticos, operaciones lógicas y expresiones 
-                                matemáticas complejas en tus scripts.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> <code>set /a</code> para aritmética</li>
-                                <li><span class="list-icon">→</span> Operadores: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></li>
-                                <li><span class="list-icon">→</span> Operaciones bit a bit</li>
-                                <li><span class="list-icon">→</span> Expresiones complejas y precedencia</li>
-                            </ul>
-                        </article>
-
-                        <!-- Tema 5 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">🔒</div>
-                            <h3 class="topic-title">Gestión de errores</h3>
-                            <p class="topic-description">
-                                Crea scripts robustos con manejo de errores profesional usando 
-                                <code>errorlevel</code>, validaciones y estrategias de recuperación.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> Código de salida <code>%errorlevel%</code></li>
-                                <li><span class="list-icon">→</span> <code>if errorlevel</code> condicionales</li>
-                                <li><span class="list-icon">→</span> Manejo de excepciones</li>
-                                <li><span class="list-icon">→</span> Logging y debugging avanzado</li>
-                            </ul>
-                        </article>
-
-                        <!-- Tema 6 -->
-                        <article class="topic-card">
-                            <div class="topic-icon">🌐</div>
-                            <h3 class="topic-title">Integración con el sistema</h3>
-                            <p class="topic-description">
-                                Interactúa con servicios de Windows, registro, tareas programadas, 
-                                red y otros componentes del sistema operativo.
-                            </p>
-                            <ul class="topic-list">
-                                <li><span class="list-icon">→</span> Comandos del sistema: <code>net</code>, <code>sc</code></li>
-                                <li><span class="list-icon">→</span> Registro con <code>reg</code></li>
-                                <li><span class="list-icon">→</span> Tareas programadas <code>schtasks</code></li>
-                                <li><span class="list-icon">→</span> Variables de entorno del sistema</li>
-                            </ul>
-                        </article>
-                    </div>
-                </div>
+              <!-- Tema 6 -->
+              <article class="topic-card">
+                <div class="topic-icon">🌐</div>
+                <h3 class="topic-title">Integración con el sistema</h3>
+                <p class="topic-description">
+                  Interactúa con servicios de Windows, registro, tareas
+                  programadas, red y otros componentes del sistema operativo.
+                </p>
+                <ul class="topic-list">
+                  <li>
+                    <span class="list-icon">→</span> Comandos del sistema:
+                    <code>net</code>, <code>sc</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Registro con
+                    <code>reg</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Tareas programadas
+                    <code>schtasks</code>
+                  </li>
+                  <li>
+                    <span class="list-icon">→</span> Variables de entorno del
+                    sistema
+                  </li>
+                </ul>
+              </article>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Sección de cierre -->
-        <section class="course-conclusion">
-            <div class="container">
-                <div class="conclusion-box">
-                    <h2 class="conclusion-title">Comienza tu aprendizaje ahora</h2>
-                    <p class="conclusion-text">
-                        Con estos tres niveles dominarás completamente la programación Batch, desde scripts 
-                        simples hasta automatizaciones complejas de sistemas. Practica constantemente, 
-                        experimenta con diferentes comandos y construye proyectos reales para consolidar 
-                        tus conocimientos.
-                    </p>
-                    <div class="conclusion-tips">
-                        <h3 class="tips-title">Consejos para el éxito:</h3>
-                        <ul class="tips-list">
-                            <li><span class="tip-icon">💡</span> Practica cada comando hasta dominarlo</li>
-                            <li><span class="tip-icon">💡</span> Crea proyectos personales de automatización</li>
-                            <li><span class="tip-icon">💡</span> Documenta siempre tus scripts con comentarios</li>
-                            <li><span class="tip-icon">💡</span> Prueba en un entorno seguro antes de producción</li>
-                            <li><span class="tip-icon">💡</span> Explora la documentación oficial de Microsoft</li>
-                        </ul>
-                    </div>
-                </div>
+      <!-- Sección de cierre -->
+      <section class="course-conclusion">
+        <div class="container">
+          <div class="conclusion-box">
+            <h2 class="conclusion-title">
+              Comienza tu aprendizaje ahora con nosotros
+            </h2>
+            <p class="conclusion-text">
+              A continución podrás encontrar una serie de consejos y prácticas
+              guiadas para desarrollar paso a paso tus primeros scripts en Batch
+              de nuestra mano y entender todo a la perfección. Recuerda
+              practicar cada comando y técnica aprendida para consolidar tus
+              conocimientos. ¡Buena suerte y disfruta del proceso de
+              aprendizaje!
+            </p>
+            <div class="conclusion-tips">
+              <h3 class="tips-title">
+                Consejos para el éxito durante el aprendizaje:
+              </h3>
+              <ul class="tips-list">
+                <li>
+                  <span class="tip-icon">💡</span> Practica cada comando hasta
+                  dominarlo
+                </li>
+                <li>
+                  <span class="tip-icon">💡</span> Crea proyectos personales de
+                  automatización (a contuniación te enseñaremos a desarrollar un
+                  batch de mantenimiento del PC para Windows)
+                </li>
+                <li>
+                  <span class="tip-icon">💡</span> Documenta siempre tus scripts
+                  con comentarios claros y explicativos para poder consultarlos
+                  en otro momento si necesitas recordar algo
+                </li>
+                <li>
+                  <span class="tip-icon">💡</span> Prueba en un entorno seguro
+                  antes de producción
+                </li>
+                <li>
+                  <span class="tip-icon">💡</span> Explora la documentación
+                  oficial de Microsoft para mejorar
+                </li>
+              </ul>
             </div>
-        </section>
+            <br />
+            <div class="curso-bat no-copy">
+  <h3 class="tips-title">
+    Construye tu propio batch de mantenimiento del PC para Windows
+  </h3>
+
+  <p>
+    En este tutorial vas a crear un pequeño “programa” de mantenimiento para Windows usando archivos
+    <strong>.bat</strong>. La idea es que entiendas qué hace cada parte, cómo se relacionan los archivos entre sí
+    y que practiques escribiendo el código tú mismo.
+  </p>
+
+  <h4>1. ¿Qué es un archivo .BAT?</h4>
+  <p>
+    Un archivo <strong>.bat</strong> (Batch) es un archivo de texto que contiene comandos de Windows.
+    Cuando lo ejecutas, el sistema va leyendo y ejecutando cada línea de arriba a abajo. Es una forma de
+    automatizar tareas que normalmente harías a mano en la consola.
+  </p>
+
+  <h4>2. Cómo crear y guardar un archivo .BAT</h4>
+  <ul>
+    <li>Abre el <strong>Bloc de notas</strong>.</li>
+    <li>Escribe el contenido del script que quieras crear.</li>
+    <li>Ve a <strong>Archivo → Guardar como…</strong>.</li>
+    <li>En <strong>Tipo</strong>, selecciona <strong>Todos los archivos</strong>.</li>
+    <li>En <strong>Nombre</strong>, escribe por ejemplo <strong>Batch_de_Mantenimiento.bat</strong>.</li>
+    <li>Asegúrate de que termina en <strong>.bat</strong> y no en <code>.txt</code>.</li>
+  </ul>
+
+  <p>
+    Todos los archivos de este proyecto deben estar en la <strong>misma carpeta</strong> para que puedan llamarse entre sí.
+  </p>
+
+  <hr />
+
+  <h4>3. Script principal: Batch_de_Mantenimiento.bat</h4>
+  <p>
+    Este es el archivo principal. Muestra un menú con 11 opciones y, según lo que elijas, ejecuta una tarea
+    de mantenimiento o llama a otros scripts.
+  </p>
+
+  <p><strong>Nombre del archivo:</strong> <code>Batch_de_Mantenimiento.bat</code></p>
+
+  <pre class="no-copy">
+@echo off
+chcp 65001 > nul
+title Mantenimiento del PC - Menú Interactivo
+color 1F
+mode con: cols=80 lines=25
+  </pre>
+
+  <p>
+    <strong>@echo off</strong> oculta los comandos para que la ventana se vea más limpia.  
+    <strong>chcp 65001</strong> configura la consola en UTF-8 para mostrar bien acentos.  
+    <strong>title</strong>, <strong>color</strong> y <strong>mode</strong> ajustan título, colores y tamaño de la ventana.
+  </p>
+
+  <p>Después viene el menú principal:</p>
+
+  <pre class="no-copy">
+:inicio 
+cls
+echo --------------------------------------
+echo          MANTENIMIENTO DEL PC
+echo --------------------------------------
+echo 1. Limpiar archivos temporales
+echo 2. Liberar caché DNS
+echo 3. Desfragmentar disco duro
+echo 4. Generar informe del sistema
+echo 5. Buscar y eliminar malware
+echo 6. Vaciar la papelera de reciclaje
+echo 7. Copia de seguridad
+echo 8. Reparar disco
+echo 9. Reparar Archivos
+echo 10. DISM
+echo 11. Salir
+echo --------------------------------------
+set /p opcion="Selecciona una opción (1-11): "
+  </pre>
+
+  <p>
+    Aquí decides qué hacer. El valor que escribes se guarda en <strong>%opcion%</strong> y se comprueba con una serie de
+    <strong>if</strong>:
+  </p>
+
+  <pre class="no-copy">
+if "%opcion%" =="1" goto limpiar_temporales
+if "%opcion%" =="2" goto liberar_dns
+if "%opcion%" =="3" goto desfragmentar
+if "%opcion%" =="4" goto generar_informe
+if "%opcion%" =="5" goto buscar_malware
+if "%opcion%" =="6" goto vaciar_papelera
+if "%opcion%" =="7" goto copia_seguridad
+if "%opcion%" =="8" goto reparar_disco
+if "%opcion%" =="9" call reparar_archivos.bat
+if "%opcion%" =="10" call DISM.bat
+if "%opcion%" =="11" goto exit
+  </pre>
+
+  <p>
+    Las opciones 1–8 saltan a secciones dentro del mismo archivo.  
+    Las opciones 9 y 10 llaman a otros scripts (<strong>reparar_archivos.bat</strong> y <strong>DISM.bat</strong>).
+  </p>
+
+  <h4>3.1 Código de las tareas 1 a 8</h4>
+  <p>
+    A continuación tienes el código de cada tarea del menú principal. Este código va en el mismo archivo
+    <strong>Batch_de_Mantenimiento.bat</strong>, debajo de los <code>if</code>.
+  </p>
+
+  <pre class="no-copy">
+:limpiar_temporales
+echo Limpiando archivos temporales...
+cleanmgr /sagerun:1
+echo Archivos temporales eliminados.
+pause
+goto inicio
+
+:liberar_dns
+echo Liberando caché de DNS...
+ipconfig /flushdns
+echo Caché de DNS liberada.
+pause
+goto inicio
+
+:desfragmentar
+echo Desfragmentando el disco duro...
+set /p confirmar="¿Deseas desfragmentar el disco duro? (s/n): "
+if /I "%confirmar%"=="s" (
+    defrag C: > nul
+    echo Desfragmentación completada.
+) else (
+    echo Desfragmentación omitida.
+)
+pause
+goto inicio
+
+:generar_informe
+echo Generando informe del sistema...
+systeminfo > C:\informe_sistema.txt
+if errorlevel 1 (
+    echo Hubo un problema al generar el informe. Verifica los permisos.
+) else (
+    echo Informe guardado como C:\informe_sistema.txt.
+)
+pause
+goto inicio
+
+:buscar_malware
+echo Iniciando búsqueda de malware...
+set /p confirmar="¿Deseas usar Windows Defender para buscar malware? (s/n): "
+if /I "%confirmar%"=="s" (
+    echo Ejecutando escaneo completo. Esto puede tardar varios minutos...
+    start /b cmd /c "%ProgramFiles%\Windows Defender\MpCmdRun.exe" -Scan -ScanType 2 > %temp%\FullScanOutput.txt
+    echo Escaneando... Por favor espera.
+    timeout /t 10 > nul
+    echo Comprobando resultados...
+    type %temp%\FullScanOutput.txt
+    echo Resultados guardados en: %temp%\FullScanOutput.txt
+) else (
+    echo Escaneo omitido.
+)
+pause
+goto inicio
+
+:vaciar_papelera
+echo Vaciando la papelera de reciclaje...
+rd /s /q %systemdrive%\$Recycle.Bin
+if errorlevel 1 (
+    echo Hubo un problema al vaciar la papelera. ¿Estás ejecutando como administrador?
+) else (
+    echo Papelera de reciclaje vaciada con éxito.
+)
+pause
+goto inicio
+
+:copia_seguridad
+echo Iniciando copia de seguridad...
+set /p origen="Introduce la ruta de la carpeta a respaldar: "
+set /p destino="Introduce la ruta de destino para la copia de seguridad: "
+xcopy %origen% %destino% /E /H /C /I
+echo Copia de seguridad completada.
+pause
+goto inicio
+
+:reparar_disco
+echo =================================
+echo         REPARACIÓN DE DISCO
+echo =================================
+set /p unidad="Introduce la letra de la unidad a reparar (ejemplo: C): "
+echo Iniciando reparación de errores en el disco %unidad%...
+chkdsk %unidad%: /F /R
+if errorlevel 1 (
+    echo Hubo un problema durante la reparación. Verifica los permisos.
+) else (
+    echo Reparación completada con éxito.
+)
+pause
+goto inicio
+  </pre>
+
+  <p>
+    Cada sección empieza con una etiqueta (por ejemplo <code>:limpiar_temporales</code>) y termina volviendo al menú con
+    <code>goto inicio</code>.
+  </p>
+
+  <hr />
+
+  <h4>4. Script de reparación de archivos: reparar_archivos.bat</h4>
+  <p>
+    Este script usa <strong>SFC</strong> para comprobar y reparar archivos del sistema de Windows.
+  </p>
+
+  <p><strong>Nombre del archivo:</strong> <code>reparar_archivos.bat</code></p>
+
+  <pre class="no-copy">
+@echo off
+chcp 65001 > nul
+title Mantenimiento del PC - sfc
+color 1F
+mode con: cols=80 lines=25
+
+:inicio 
+cls
+echo --------------------------------
+echo       MANTENIMIENTO DEL PC
+echo --------------------------------
+echo 1. Verificar archivos
+echo 2. Reparar 
+echo 3. Volver
+echo --------------------------------
+set /p opcion="Selecciona una opción (1-3): "
+
+if "%opcion%" =="1" goto verificar
+if "%opcion%" =="2" goto corregir
+if "%opcion%" =="3" call Batch_de_Mantenimiento.bat
+
+:verificar
+echo verificando...
+sfc /verifyonly
+echo Archivos verificados.
+pause
+goto inicio
+
+:corregir
+echo corrigiendo...
+sfc /scannow
+echo Archivos corregidos.
+pause
+goto inicio
+  </pre>
+
+  <p>
+    <strong>sfc /verifyonly</strong> solo comprueba si hay archivos dañados.  
+    <strong>sfc /scannow</strong> analiza y repara automáticamente los archivos del sistema.
+  </p>
+
+  <hr />
+
+  <h4>5. Script DISM: DISM.bat</h4>
+  <p>
+    Este script usa <strong>DISM</strong> para comprobar y reparar la imagen de Windows, algo más profundo que los archivos individuales.
+  </p>
+
+  <p><strong>Nombre del archivo:</strong> <code>DISM.bat</code></p>
+
+  <pre class="no-copy">
+@echo off
+chcp 65001 > nul
+title Mantenimiento del PC - DISM
+color 1F
+mode con: cols=80 lines=25
+
+:inicio 
+cls
+echo ----------------------------------------
+echo           MANTENIMIENTO DEL PC
+echo ----------------------------------------
+echo 1. Verificar salud del sistema
+echo 2. Reparar imagen del sistema (Online)
+echo 3. Reparar imagen del sistema (Offline)
+echo 4. Volver
+echo ----------------------------------------
+set /p opcion="Selecciona una opción (1-4): "
+
+if "%opcion%" =="1" goto verificar_salud_del_sistema
+if "%opcion%" =="2" goto reparar_imagen_del_sistema_online
+if "%opcion%" =="3" goto reparar_imagen_del_sistema_offline
+if "%opcion%" =="4" call Batch_de_Mantenimiento.bat
+
+:verificar_salud_del_sistema
+echo Verificando salud del sistema...
+DISM /Online /Cleanup-Image /CheckHealth
+echo Verificación realizada
+pause
+goto inicio
+
+:reparar_imagen_del_sistema_online
+echo Reparando imagen del sistema...
+DISM /Online /Cleanup-Image /RestoreHealth
+echo Reparación realizada
+pause
+goto inicio
+
+:reparar_imagen_del_sistema_offline
+echo Reparando imagen del sistema...
+dism.exe
+echo Operación completada
+pause
+goto inicio
+  </pre>
+
+  <p>
+    <strong>/CheckHealth</strong> comprueba si la imagen está dañada.  
+    <strong>/RestoreHealth</strong> intenta repararla.  
+    El modo offline se usaría con parámetros adicionales si se repara desde otro medio.
+  </p>
+
+  <hr />
+
+  <h4>6. Cómo se relacionan todos los archivos</h4>
+  <ul>
+    <li><strong>Batch_de_Mantenimiento.bat</strong> es el menú principal.</li>
+    <li>Desde él se llama a:
+      <ul>
+        <li><strong>reparar_archivos.bat</strong> para SFC.</li>
+        <li><strong>DISM.bat</strong> para DISM.</li>
+      </ul>
+    </li>
+    <li>Ambos scripts pueden volver al menú principal llamando de nuevo a <strong>Batch_de_Mantenimiento.bat</strong>.</li>
+  </ul>
+
+  <hr />
+
+  <h4>7. (Opcional avanzado) Convertir tu BAT en un EXE</h4>
+  <p>
+    Windows permite que un archivo <strong>.exe</strong> ejecute otros <strong>.bat</strong> sin problema.  
+    Por eso solo necesitas convertir a EXE el archivo principal.
+  </p>
+
+  <ul>
+    <li>Descarga <strong>Bat_To_Exe_Converter_4.2</strong>.</li>
+    <li>Selecciona <strong>Batch_de_Mantenimiento.bat</strong>.</li>
+    <li>Activa “Ejecutar como administrador”.</li>
+    <li>Convierte el archivo.</li>
+  </ul>
+
+  <hr />
+
+  <h4>8. Resumen del código final de cada archivo</h4>
+  <p>
+    A continuación tienes cómo debe quedar cada archivo completo. Están protegidos contra copia para que practiques
+    escribiéndolos tú mismo en tu editor.
+  </p>
+
+  <h5>8.1 Batch_de_Mantenimiento.bat</h5>
+  <pre class="no-copy">
+@echo off
+chcp 65001 > nul
+title Mantenimiento del PC - Menú Interactivo
+color 1F
+mode con: cols=80 lines=25
+
+:inicio 
+cls
+echo --------------------------------------
+echo          MANTENIMIENTO DEL PC
+echo --------------------------------------
+echo 1. Limpiar archivos temporales
+echo 2. Liberar caché DNS
+echo 3. Desfragmentar disco duro
+echo 4. Generar informe del sistema
+echo 5. Buscar y eliminar malware
+echo 6. Vaciar la papelera de reciclaje
+echo 7. Copia de seguridad
+echo 8. Reparar disco
+echo 9. Reparar Archivos
+echo 10. DISM
+echo 11. Salir
+echo --------------------------------------
+set /p opcion="Selecciona una opción (1-11): "
+
+if "%opcion%" =="1" goto limpiar_temporales
+if "%opcion%" =="2" goto liberar_dns
+if "%opcion%" =="3" goto desfragmentar
+if "%opcion%" =="4" goto generar_informe
+if "%opcion%" =="5" goto buscar_malware
+if "%opcion%" =="6" goto vaciar_papelera
+if "%opcion%" =="7" goto copia_seguridad
+if "%opcion%" =="8" goto reparar_disco
+if "%opcion%" =="9" call reparar_archivos.bat
+if "%opcion%" =="10" call DISM.bat
+if "%opcion%" =="11" goto exit
+
+:limpiar_temporales
+echo Limpiando archivos temporales...
+cleanmgr /sagerun:1
+echo Archivos temporales eliminados.
+pause
+goto inicio
+
+:liberar_dns
+echo Liberando caché de DNS...
+ipconfig /flushdns
+echo Caché de DNS liberada.
+pause
+goto inicio
+
+:desfragmentar
+echo Desfragmentando el disco duro...
+set /p confirmar="¿Deseas desfragmentar el disco duro? (s/n): "
+if /I "%confirmar%"=="s" (
+    defrag C: > nul
+    echo Desfragmentación completada.
+) else (
+    echo Desfragmentación omitida.
+)
+pause
+goto inicio
+
+:generar_informe
+echo Generando informe del sistema...
+systeminfo > C:\informe_sistema.txt
+if errorlevel 1 (
+    echo Hubo un problema al generar el informe. Verifica los permisos.
+) else (
+    echo Informe guardado como C:\informe_sistema.txt.
+)
+pause
+goto inicio
+
+:buscar_malware
+echo Iniciando búsqueda de malware...
+set /p confirmar="¿Deseas usar Windows Defender para buscar malware? (s/n): "
+if /I "%confirmar%"=="s" (
+    echo Ejecutando escaneo completo. Esto puede tardar varios minutos...
+    start /b cmd /c "%ProgramFiles%\Windows Defender\MpCmdRun.exe" -Scan -ScanType 2 > %temp%\FullScanOutput.txt
+    echo Escaneando... Por favor espera.
+    timeout /t 10 > nul
+    echo Comprobando resultados...
+    type %temp%\FullScanOutput.txt
+    echo Resultados guardados en: %temp%\FullScanOutput.txt
+) else (
+    echo Escaneo omitido.
+)
+pause
+goto inicio
+
+:vaciar_papelera
+echo Vaciando la papelera de reciclaje...
+rd /s /q %systemdrive%\$Recycle.Bin
+if errorlevel 1 (
+    echo Hubo un problema al vaciar la papelera. ¿Estás ejecutando como administrador?
+) else (
+    echo Papelera de reciclaje vaciada con éxito.
+)
+pause
+goto inicio
+
+:copia_seguridad
+echo Iniciando copia de seguridad...
+set /p origen="Introduce la ruta de la carpeta a respaldar: "
+set /p destino="Introduce la ruta de destino para la copia de seguridad: "
+xcopy %origen% %destino% /E /H /C /I
+echo Copia de seguridad completada.
+pause
+goto inicio
+
+:reparar_disco
+echo =================================
+echo         REPARACIÓN DE DISCO
+echo =================================
+set /p unidad="Introduce la letra de la unidad a reparar (ejemplo: C): "
+echo Iniciando reparación de errores en el disco %unidad%...
+chkdsk %unidad%: /F /R
+if errorlevel 1 (
+    echo Hubo un problema durante la reparación. Verifica los permisos.
+) else (
+    echo Reparación completada con éxito.
+)
+pause
+goto inicio
+  </pre>
+
+  <h5>8.2 reparar_archivos.bat</h5>
+  <pre class="no-copy">
+@echo off
+chcp 65001 > nul
+title Mantenimiento del PC - sfc
+color 1F
+mode con: cols=80 lines=25
+
+:inicio 
+cls
+echo --------------------------------
+echo       MANTENIMIENTO DEL PC
+echo --------------------------------
+echo 1. Verificar archivos
+echo 2. Reparar 
+echo 3. Volver
+echo --------------------------------
+set /p opcion="Selecciona una opción (1-3): "
+
+if "%opcion%" =="1" goto verificar
+if "%opcion%" =="2" goto corregir
+if "%opcion%" =="3" call Batch_de_Mantenimiento.bat
+
+:verificar
+echo verificando...
+sfc /verifyonly
+echo Archivos verificados.
+pause
+goto inicio
+
+:corregir
+echo corrigiendo...
+sfc /scannow
+echo Archivos corregidos.
+pause
+goto inicio
+  </pre>
+
+  <h5>8.3 DISM.bat</h5>
+  <pre class="no-copy">
+@echo off
+chcp 65001 > nul
+title Mantenimiento del PC - DISM
+color 1F
+mode con: cols=80 lines=25
+
+:inicio 
+cls
+echo ----------------------------------------
+echo           MANTENIMIENTO DEL PC
+echo ----------------------------------------
+echo 1. Verificar salud del sistema
+echo 2. Reparar imagen del sistema (Online)
+echo 3. Reparar imagen del sistema (Offline)
+echo 4. Volver
+echo ----------------------------------------
+set /p opcion="Selecciona una opción (1-4): "
+
+if "%opcion%" =="1" goto verificar_salud_del_sistema
+if "%opcion%" =="2" goto reparar_imagen_del_sistema_online
+if "%opcion%" =="3" goto reparar_imagen_del_sistema_offline
+if "%opcion%" =="4" call Batch_de_Mantenimiento.bat
+
+:verificar_salud_del_sistema
+echo Verificando salud del sistema...
+DISM /Online /Cleanup-Image /CheckHealth
+echo Verificación realizada
+pause
+goto inicio
+
+:reparar_imagen_del_sistema_online
+echo Reparando imagen del sistema...
+DISM /Online /Cleanup-Image /RestoreHealth
+echo Reparación realizada
+pause
+goto inicio
+
+:reparar_imagen_del_sistema_offline
+echo Reparando imagen del sistema...
+dism.exe
+echo Operación completada
+pause
+goto inicio
+  </pre>
+</div>
+
+          </div>
+        </div>
+      </section>
     </main>
 
-     <!-- Footer minimalista -->
+    <!-- Footer minimalista -->
     <footer class="footer">
       <div class="container">
         <p class="footer-text">
@@ -390,7 +1166,7 @@
         <p class="footer-subtext">
           Desarrollado con 💙 para estudiantes de informática
         </p>
-        <br>
+        <br />
         <p class="footer-subtext footer-links">
           <a href="../index.html">Inicio</a> <span class="separator">|</span>
           <a href="historia.html">Historia</a> <span class="separator">|</span>
@@ -399,5 +1175,14 @@
         </p>
       </div>
     </footer>
-</body>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const bloque = document.querySelector(".curso-bat");
+          if (!bloque) return;
+          bloque.addEventListener("contextmenu", (e) => e.preventDefault());
+        });
+      </script>
+      
+  </body>
 </html>
