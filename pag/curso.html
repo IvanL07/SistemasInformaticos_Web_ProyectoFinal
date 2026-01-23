@@ -584,64 +584,87 @@
             </div>
             <br />
             <div class="curso-bat no-copy">
-  <h3 class="tips-title">
-    Construye tu propio batch de mantenimiento del PC para Windows
-  </h3>
+              <h3 class="tips-title">
+                Construye tu propio batch de mantenimiento del PC para Windows
+              </h3>
 
-  <p>
-    En este tutorial vas a crear un pequeño “programa” de mantenimiento para Windows usando archivos
-    <strong>.bat</strong>. La idea es que entiendas qué hace cada parte, cómo se relacionan los archivos entre sí
-    y que practiques escribiendo el código tú mismo.
-  </p>
+              <p>
+                En este tutorial vas a crear un pequeño “programa” de
+                mantenimiento para Windows usando archivos
+                <strong>.bat</strong>. La idea es que entiendas qué hace cada
+                parte, cómo se relacionan los archivos entre sí y que practiques
+                escribiendo el código tú mismo.
+              </p>
 
-  <h4>1. ¿Qué es un archivo .BAT?</h4>
-  <p>
-    Un archivo <strong>.bat</strong> (Batch) es un archivo de texto que contiene comandos de Windows.
-    Cuando lo ejecutas, el sistema va leyendo y ejecutando cada línea de arriba a abajo. Es una forma de
-    automatizar tareas que normalmente harías a mano en la consola.
-  </p>
+              <h4>1. ¿Qué es un archivo .BAT?</h4>
+              <p>
+                Un archivo <strong>.bat</strong> (Batch) es un archivo de texto
+                que contiene comandos de Windows. Cuando lo ejecutas, el sistema
+                va leyendo y ejecutando cada línea de arriba a abajo. Es una
+                forma de automatizar tareas que normalmente harías a mano en la
+                consola.
+              </p>
 
-  <h4>2. Cómo crear y guardar un archivo .BAT</h4>
-  <ul>
-    <li>Abre el <strong>Bloc de notas</strong>.</li>
-    <li>Escribe el contenido del script que quieras crear.</li>
-    <li>Ve a <strong>Archivo → Guardar como…</strong>.</li>
-    <li>En <strong>Tipo</strong>, selecciona <strong>Todos los archivos</strong>.</li>
-    <li>En <strong>Nombre</strong>, escribe por ejemplo <strong>Batch_de_Mantenimiento.bat</strong>.</li>
-    <li>Asegúrate de que termina en <strong>.bat</strong> y no en <code>.txt</code>.</li>
-  </ul>
+              <h4>2. Cómo crear y guardar un archivo .BAT</h4>
+              <ul>
+                <li>Abre el <strong>Bloc de notas</strong>.</li>
+                <li>Escribe el contenido del script que quieras crear.</li>
+                <li>Ve a <strong>Archivo → Guardar como…</strong>.</li>
+                <li>
+                  En <strong>Tipo</strong>, selecciona
+                  <strong>Todos los archivos</strong>.
+                </li>
+                <li>
+                  En <strong>Nombre</strong>, escribe por ejemplo
+                  <strong>Batch_de_Mantenimiento.bat</strong>.
+                </li>
+                <li>
+                  Asegúrate de que termina en <strong>.bat</strong> y no en
+                  <code>.txt</code>.
+                </li>
+              </ul>
 
-  <p>
-    Todos los archivos de este proyecto deben estar en la <strong>misma carpeta</strong> para que puedan llamarse entre sí.
-  </p>
+              <p>
+                Todos los archivos de este proyecto deben estar en la
+                <strong>misma carpeta</strong> para que puedan llamarse entre
+                sí.
+              </p>
 
-  <hr />
+              <hr />
 
-  <h4>3. Script principal: Batch_de_Mantenimiento.bat</h4>
-  <p>
-    Este es el archivo principal. Muestra un menú con 11 opciones y, según lo que elijas, ejecuta una tarea
-    de mantenimiento o llama a otros scripts.
-  </p>
+              <h4>3. Script principal: Batch_de_Mantenimiento.bat</h4>
+              <p>
+                Este es el archivo principal. Muestra un menú con 11 opciones y,
+                según lo que elijas, ejecuta una tarea de mantenimiento o llama
+                a otros scripts.
+              </p>
 
-  <p><strong>Nombre del archivo:</strong> <code>Batch_de_Mantenimiento.bat</code></p>
+              <p>
+                <strong>Nombre del archivo:</strong>
+                <code>Batch_de_Mantenimiento.bat</code>
+              </p>
 
-  <pre class="no-copy">
+              <pre class="no-copy">
 @echo off
 chcp 65001 > nul
 title Mantenimiento del PC - Menú Interactivo
 color 1F
 mode con: cols=80 lines=25
-  </pre>
+  </pre
+              >
 
-  <p>
-    <strong>@echo off</strong> oculta los comandos para que la ventana se vea más limpia.  
-    <strong>chcp 65001</strong> configura la consola en UTF-8 para mostrar bien acentos.  
-    <strong>title</strong>, <strong>color</strong> y <strong>mode</strong> ajustan título, colores y tamaño de la ventana.
-  </p>
+              <p>
+                <strong>@echo off</strong> oculta los comandos para que la
+                ventana se vea más limpia. <strong>chcp 65001</strong> configura
+                la consola en UTF-8 para mostrar bien acentos.
+                <strong>title</strong>, <strong>color</strong> y
+                <strong>mode</strong> ajustan título, colores y tamaño de la
+                ventana.
+              </p>
 
-  <p>Después viene el menú principal:</p>
+              <p>Después viene el menú principal:</p>
 
-  <pre class="no-copy">
+              <pre class="no-copy">
 :inicio 
 cls
 echo --------------------------------------
@@ -660,14 +683,16 @@ echo 10. DISM
 echo 11. Salir
 echo --------------------------------------
 set /p opcion="Selecciona una opción (1-11): "
-  </pre>
+  </pre
+              >
 
-  <p>
-    Aquí decides qué hacer. El valor que escribes se guarda en <strong>%opcion%</strong> y se comprueba con una serie de
-    <strong>if</strong>:
-  </p>
+              <p>
+                Aquí decides qué hacer. El valor que escribes se guarda en
+                <strong>%opcion%</strong> y se comprueba con una serie de
+                <strong>if</strong>:
+              </p>
 
-  <pre class="no-copy">
+              <pre class="no-copy">
 if "%opcion%" =="1" goto limpiar_temporales
 if "%opcion%" =="2" goto liberar_dns
 if "%opcion%" =="3" goto desfragmentar
@@ -679,20 +704,26 @@ if "%opcion%" =="8" goto reparar_disco
 if "%opcion%" =="9" call reparar_archivos.bat
 if "%opcion%" =="10" call DISM.bat
 if "%opcion%" =="11" goto exit
-  </pre>
+  </pre
+              >
 
-  <p>
-    Las opciones 1–8 saltan a secciones dentro del mismo archivo.  
-    Las opciones 9 y 10 llaman a otros scripts (<strong>reparar_archivos.bat</strong> y <strong>DISM.bat</strong>).
-  </p>
+              <p>
+                Las opciones 1–8 saltan a secciones dentro del mismo archivo.
+                Las opciones 9 y 10 llaman a otros scripts (<strong
+                  >reparar_archivos.bat</strong
+                >
+                y <strong>DISM.bat</strong>).
+              </p>
 
-  <h4>3.1 Código de las tareas 1 a 8</h4>
-  <p>
-    A continuación tienes el código de cada tarea del menú principal. Este código va en el mismo archivo
-    <strong>Batch_de_Mantenimiento.bat</strong>, debajo de los <code>if</code>.
-  </p>
+              <h4>3.1 Código de las tareas 1 a 8</h4>
+              <p>
+                A continuación tienes el código de cada tarea del menú
+                principal. Este código va en el mismo archivo
+                <strong>Batch_de_Mantenimiento.bat</strong>, debajo de los
+                <code>if</code>.
+              </p>
 
-  <pre class="no-copy">
+              <pre class="no-copy">
 :limpiar_temporales
 echo Limpiando archivos temporales...
 cleanmgr /sagerun:1
@@ -781,23 +812,29 @@ if errorlevel 1 (
 )
 pause
 goto inicio
-  </pre>
+  </pre
+              >
 
-  <p>
-    Cada sección empieza con una etiqueta (por ejemplo <code>:limpiar_temporales</code>) y termina volviendo al menú con
-    <code>goto inicio</code>.
-  </p>
+              <p>
+                Cada sección empieza con una etiqueta (por ejemplo
+                <code>:limpiar_temporales</code>) y termina volviendo al menú
+                con <code>goto inicio</code>.
+              </p>
 
-  <hr />
+              <hr />
 
-  <h4>4. Script de reparación de archivos: reparar_archivos.bat</h4>
-  <p>
-    Este script usa <strong>SFC</strong> para comprobar y reparar archivos del sistema de Windows.
-  </p>
+              <h4>4. Script de reparación de archivos: reparar_archivos.bat</h4>
+              <p>
+                Este script usa <strong>SFC</strong> para comprobar y reparar
+                archivos del sistema de Windows.
+              </p>
 
-  <p><strong>Nombre del archivo:</strong> <code>reparar_archivos.bat</code></p>
+              <p>
+                <strong>Nombre del archivo:</strong>
+                <code>reparar_archivos.bat</code>
+              </p>
 
-  <pre class="no-copy">
+              <pre class="no-copy">
 @echo off
 chcp 65001 > nul
 title Mantenimiento del PC - sfc
@@ -832,23 +869,27 @@ sfc /scannow
 echo Archivos corregidos.
 pause
 goto inicio
-  </pre>
+  </pre
+              >
 
-  <p>
-    <strong>sfc /verifyonly</strong> solo comprueba si hay archivos dañados.  
-    <strong>sfc /scannow</strong> analiza y repara automáticamente los archivos del sistema.
-  </p>
+              <p>
+                <strong>sfc /verifyonly</strong> solo comprueba si hay archivos
+                dañados. <strong>sfc /scannow</strong> analiza y repara
+                automáticamente los archivos del sistema.
+              </p>
 
-  <hr />
+              <hr />
 
-  <h4>5. Script DISM: DISM.bat</h4>
-  <p>
-    Este script usa <strong>DISM</strong> para comprobar y reparar la imagen de Windows, algo más profundo que los archivos individuales.
-  </p>
+              <h4>5. Script DISM: DISM.bat</h4>
+              <p>
+                Este script usa <strong>DISM</strong> para comprobar y reparar
+                la imagen de Windows, algo más profundo que los archivos
+                individuales.
+              </p>
 
-  <p><strong>Nombre del archivo:</strong> <code>DISM.bat</code></p>
+              <p><strong>Nombre del archivo:</strong> <code>DISM.bat</code></p>
 
-  <pre class="no-copy">
+              <pre class="no-copy">
 @echo off
 chcp 65001 > nul
 title Mantenimiento del PC - DISM
@@ -892,53 +933,64 @@ dism.exe
 echo Operación completada
 pause
 goto inicio
-  </pre>
+  </pre
+              >
 
-  <p>
-    <strong>/CheckHealth</strong> comprueba si la imagen está dañada.  
-    <strong>/RestoreHealth</strong> intenta repararla.  
-    El modo offline se usaría con parámetros adicionales si se repara desde otro medio.
-  </p>
+              <p>
+                <strong>/CheckHealth</strong> comprueba si la imagen está
+                dañada. <strong>/RestoreHealth</strong> intenta repararla. El
+                modo offline se usaría con parámetros adicionales si se repara
+                desde otro medio.
+              </p>
 
-  <hr />
+              <hr />
 
-  <h4>6. Cómo se relacionan todos los archivos</h4>
-  <ul>
-    <li><strong>Batch_de_Mantenimiento.bat</strong> es el menú principal.</li>
-    <li>Desde él se llama a:
-      <ul>
-        <li><strong>reparar_archivos.bat</strong> para SFC.</li>
-        <li><strong>DISM.bat</strong> para DISM.</li>
-      </ul>
-    </li>
-    <li>Ambos scripts pueden volver al menú principal llamando de nuevo a <strong>Batch_de_Mantenimiento.bat</strong>.</li>
-  </ul>
+              <h4>6. Cómo se relacionan todos los archivos</h4>
+              <ul>
+                <li>
+                  <strong>Batch_de_Mantenimiento.bat</strong> es el menú
+                  principal.
+                </li>
+                <li>
+                  Desde él se llama a:
+                  <ul>
+                    <li><strong>reparar_archivos.bat</strong> para SFC.</li>
+                    <li><strong>DISM.bat</strong> para DISM.</li>
+                  </ul>
+                </li>
+                <li>
+                  Ambos scripts pueden volver al menú principal llamando de
+                  nuevo a <strong>Batch_de_Mantenimiento.bat</strong>.
+                </li>
+              </ul>
 
-  <hr />
+              <hr />
 
-  <h4>7. (Opcional avanzado) Convertir tu BAT en un EXE</h4>
-  <p>
-    Windows permite que un archivo <strong>.exe</strong> ejecute otros <strong>.bat</strong> sin problema.  
-    Por eso solo necesitas convertir a EXE el archivo principal.
-  </p>
+              <h4>7. (Opcional avanzado) Convertir tu BAT en un EXE</h4>
+              <p>
+                Windows permite que un archivo <strong>.exe</strong> ejecute
+                otros <strong>.bat</strong> sin problema. Por eso solo necesitas
+                convertir a EXE el archivo principal.
+              </p>
 
-  <ul>
-    <li>Descarga <strong>Bat_To_Exe_Converter_4.2</strong>.</li>
-    <li>Selecciona <strong>Batch_de_Mantenimiento.bat</strong>.</li>
-    <li>Activa “Ejecutar como administrador”.</li>
-    <li>Convierte el archivo.</li>
-  </ul>
+              <ul>
+                <li>Descarga <strong>Bat_To_Exe_Converter_4.2</strong>.</li>
+                <li>Selecciona <strong>Batch_de_Mantenimiento.bat</strong>.</li>
+                <li>Activa “Ejecutar como administrador”.</li>
+                <li>Convierte el archivo.</li>
+              </ul>
 
-  <hr />
+              <hr />
 
-  <h4>8. Resumen del código final de cada archivo</h4>
-  <p>
-    A continuación tienes cómo debe quedar cada archivo completo. Están protegidos contra copia para que practiques
-    escribiéndolos tú mismo en tu editor.
-  </p>
+              <h4>8. Resumen del código final de cada archivo</h4>
+              <p>
+                A continuación tienes cómo debe quedar cada archivo completo.
+                Están protegidos contra copia para que practiques escribiéndolos
+                tú mismo en tu editor.
+              </p>
 
-  <h5>8.1 Batch_de_Mantenimiento.bat</h5>
-  <pre class="no-copy">
+              <h5>8.1 Batch_de_Mantenimiento.bat</h5>
+              <pre class="no-copy">
 @echo off
 chcp 65001 > nul
 title Mantenimiento del PC - Menú Interactivo
@@ -1064,10 +1116,11 @@ if errorlevel 1 (
 )
 pause
 goto inicio
-  </pre>
+  </pre
+              >
 
-  <h5>8.2 reparar_archivos.bat</h5>
-  <pre class="no-copy">
+              <h5>8.2 reparar_archivos.bat</h5>
+              <pre class="no-copy">
 @echo off
 chcp 65001 > nul
 title Mantenimiento del PC - sfc
@@ -1102,10 +1155,11 @@ sfc /scannow
 echo Archivos corregidos.
 pause
 goto inicio
-  </pre>
+  </pre
+              >
 
-  <h5>8.3 DISM.bat</h5>
-  <pre class="no-copy">
+              <h5>8.3 DISM.bat</h5>
+              <pre class="no-copy">
 @echo off
 chcp 65001 > nul
 title Mantenimiento del PC - DISM
@@ -1149,9 +1203,9 @@ dism.exe
 echo Operación completada
 pause
 goto inicio
-  </pre>
-</div>
-
+  </pre
+              >
+            </div>
           </div>
         </div>
       </section>
@@ -1176,13 +1230,12 @@ goto inicio
       </div>
     </footer>
 
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const bloque = document.querySelector(".curso-bat");
-          if (!bloque) return;
-          bloque.addEventListener("contextmenu", (e) => e.preventDefault());
-        });
-      </script>
-      
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const bloque = document.querySelector(".curso-bat");
+        if (!bloque) return;
+        bloque.addEventListener("contextmenu", (e) => e.preventDefault());
+      });
+    </script>
   </body>
 </html>
