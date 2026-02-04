@@ -505,7 +505,7 @@ body {
 }
 
 .page-hero-juego {
-  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  background: linear-gradient(135deg, #2b2f36 0%, #1f2329 100%);
 }
 
 /* ===================================
@@ -1301,6 +1301,215 @@ BLOQUEO DE COPIA - TEXTO BAT
   background-color: #0097a7; /* tono más oscuro al pasar el ratón */
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   QUIZ ESTILO
+   =================================== */
+
+/* Container botón principal */
+.quiz-btn-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+
+/* Botón principal */
+.btn-quiz {
+  background-color: #00bcd4;
+  color: white;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  margin-top: 25px;
+}
+
+.btn-quiz:hover {
+  background-color: #0097a7;
+  transform: translateY(-2px);
+}
+
+/* Fondo del modal */
+.modal-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Contenedor del modal */
+.modal-box {
+  background: white;
+  width: 500px;
+  max-width: 90%;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  animation: fadeIn 0.3s ease;
+
+  /* SCROLL */ 
+  max-height: 80vh; 
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+/* Botón cerrar */
+.close-btn {
+  float: right;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.close-btn:hover {
+  color: black;
+}
+
+/* Modal del diploma */
+#diplomaModal {
+  display: none;
+}
+
+/* Caja del diploma */
+#diplomaModal .modal-box {
+  background: #e0f7fa; /* azul clarito como tu estilo */
+  border: 3px solid #00bcd4; /* turquesa */
+  border-radius: 14px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  max-height: 75vh;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Título del diploma */
+#diplomaModal h2 {
+  color: #007c91;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+/* Texto del diploma */
+#diplomaText {
+  font-size: 1.3rem;
+  color: #004d57;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* Botón cerrar */
+#diplomaModal .close-btn {
+  float: right;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #007c91;
+}
+
+#diplomaModal .close-btn:hover {
+  color: #004d57;
+}
+
+/* ===================================
+   JUEGO PIEDRA PAPEL TIJERA
+   =================================== */
+
+/* Contenedor estilo CMD */
+.cmd-container {
+  background: #000;
+  color: #00ff00;
+  font-family: "Consolas", monospace;
+  padding: 22px;
+  border-radius: 16px;
+
+  /* MÁS GRANDE + RESPONSIVE */
+  width: min(1100px, 92vw);
+  height: min(70vh, 680px);
+  min-height: 420px;
+
+  margin: 48px auto;
+  box-shadow: 0 0 28px rgba(0, 255, 0, 0.35);
+}
+
+/* Pantalla de salida */
+.cmd-output {
+  /* Ocupa TODO el alto disponible, dejando sitio al input */
+  height: calc(100% - 52px);
+  overflow-y: auto;
+  white-space: pre-wrap;
+  margin-bottom: 12px;
+
+  /* Suaviza el scroll en algunos navegadores */
+  scrollbar-gutter: stable;
+}
+
+/* Línea de entrada */
+.cmd-input-area {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cmd-prefix {
+  margin-right: 0;
+}
+
+#cmdInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #00ff00;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Texto de ayuda bajo la consola */
+.game-hint {
+  max-width: 900px;
+  margin: 24px auto 0;
+  padding: 16px 20px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 4px solid #22c55e;
+  border-radius: 8px;
+
+  color: black;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Símbolo tipo terminal */
+.hint-symbol {
+  color: #22c55e;
+  font-weight: bold;
+  font-family: "Consolas", monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Texto */
+.game-hint p {
+  margin: 0;
 }
 
 

@@ -1615,10 +1615,15 @@ exit
             </div>
           </div>
         </div>
+        <div class="quiz-btn-container">
+          <button id="openQuizBtn" class="btn-quiz">
+            Haz un QUIZ para evaluar tus conocimientos
+          </button>
+        </div>
       </section>
     </main>
 
-    <!-- Footer minimalista -->
+    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <p class="footer-text">
@@ -1636,6 +1641,209 @@ exit
         </p>
       </div>
     </footer>
+
+    <!-- Modal del QUIZ -->
+    <div id="quizModal" class="modal-bg">
+      <div class="modal-box">
+        <span class="close-btn" onclick="closeQuiz()">×</span>
+        <h3>QUIZ del Curso BAT</h3>
+        <p>
+          Responde correctamente todas las preguntas para obtener tu diploma.
+        </p>
+        <form id="quizForm">
+          <p><strong>1. ¿Qué comando limpia la pantalla?</strong></p>
+          <label><input type="radio" name="q1" value="clear" /> clear</label
+          ><br />
+          <label><input type="radio" name="q1" value="cls" /> cls</label><br />
+          <p><strong>2. ¿Qué comando pide datos al usuario?</strong></p>
+          <label><input type="radio" name="q2" value="input" /> input</label
+          ><br />
+          <label><input type="radio" name="q2" value="set /p" /> set /p</label
+          ><br />
+          <p><strong>3. ¿Qué variable genera números aleatorios?</strong></p>
+          <label><input type="radio" name="q3" value="%rand%" /> %rand%</label
+          ><br />
+          <label
+            ><input type="radio" name="q3" value="%random%" /> %random%</label
+          ><br />
+          <p><strong>4. ¿Qué comando salta a una etiqueta?</strong></p>
+          <label><input type="radio" name="q4" value="jump" /> jump</label
+          ><br />
+          <label><input type="radio" name="q4" value="goto" /> goto</label
+          ><br />
+          <p>
+            <strong
+              >5. ¿Qué comando detiene la ejecución hasta pulsar una
+              tecla?</strong
+            >
+          </p>
+          <label><input type="radio" name="q5" value="stop" /> stop</label
+          ><br />
+          <label><input type="radio" name="q5" value="pause" /> pause</label
+          ><br />
+          <p><strong>6. ¿Qué comando muestra texto en pantalla?</strong></p>
+          <label><input type="radio" name="q6" value="print" /> print</label
+          ><br />
+          <label><input type="radio" name="q6" value="echo" /> echo</label
+          ><br />
+          <p>
+            <strong>7. ¿Qué comando cambia el título de la ventana?</strong>
+          </p>
+          <label><input type="radio" name="q7" value="window" /> window</label
+          ><br />
+          <label><input type="radio" name="q7" value="title" /> title</label
+          ><br />
+          <p><strong>8. ¿Qué comando cambia el color del texto?</strong></p>
+          <label><input type="radio" name="q8" value="paint" /> paint</label
+          ><br />
+          <label><input type="radio" name="q8" value="color" /> color</label
+          ><br />
+          <p><strong>9. ¿Qué comando limpia variables?</strong></p>
+          <label><input type="radio" name="q9" value="unset" /> unset</label
+          ><br />
+          <label><input type="radio" name="q9" value="set" /> set</label><br />
+          <p><strong>10. ¿Qué comando permite crear una etiqueta?</strong></p>
+          <label><input type="radio" name="q10" value="label" /> label</label
+          ><br />
+          <label
+            ><input type="radio" name="q10" value=":etiqueta" />
+            :etiqueta</label
+          ><br />
+          <p><strong>11. ¿Qué comando permite cerrar un script?</strong></p>
+          <label><input type="radio" name="q11" value="stop" /> stop</label
+          ><br />
+          <label><input type="radio" name="q11" value="exit" /> exit</label
+          ><br />
+          <p>
+            <strong
+              >12. ¿Qué comando permite redirigir salida a un archivo?</strong
+            >
+          </p>
+          <label
+            ><input type="radio" name="q12" value="redirect" /> redirect</label
+          ><br />
+          <label><input type="radio" name="q12" value=">" /> ></label><br />
+          <p><strong>13. ¿Qué comando añade contenido a un archivo?</strong></p>
+          <label><input type="radio" name="q13" value="append" /> append</label
+          ><br />
+          <label><input type="radio" name="q13" value=">>" /> >></label><br />
+          <p><strong>14. ¿Qué comando muestra la fecha?</strong></p>
+          <label
+            ><input type="radio" name="q14" value="time /t" /> time /t</label
+          ><br />
+          <label
+            ><input type="radio" name="q14" value="date /t" /> date /t</label
+          ><br />
+          <p><strong>15. ¿Qué comando muestra la hora?</strong></p>
+          <label><input type="radio" name="q15" value="hour" /> hour</label
+          ><br />
+          <label
+            ><input type="radio" name="q15" value="time /t" /> time /t</label
+          ><br />
+          <p><strong>16. ¿Qué comando lista archivos?</strong></p>
+          <label><input type="radio" name="q16" value="ls" /> ls</label><br />
+          <label><input type="radio" name="q16" value="dir" /> dir</label><br />
+          <p><strong>17. ¿Qué comando crea una carpeta?</strong></p>
+          <label
+            ><input type="radio" name="q17" value="newfolder" />
+            newfolder</label
+          ><br />
+          <label><input type="radio" name="q17" value="mkdir" /> mkdir</label
+          ><br />
+          <p><strong>18. ¿Qué comando borra un archivo?</strong></p>
+          <label><input type="radio" name="q18" value="remove" /> remove</label
+          ><br />
+          <label><input type="radio" name="q18" value="del" /> del</label><br />
+          <p><strong>19. ¿Qué comando borra una carpeta?</strong></p>
+          <label><input type="radio" name="q19" value="rm" /> rm</label><br />
+          <label><input type="radio" name="q19" value="rmdir" /> rmdir</label
+          ><br />
+          <p><strong>20. ¿Qué comando pausa 5 segundos?</strong></p>
+          <label><input type="radio" name="q20" value="wait 5" /> wait 5</label
+          ><br />
+          <label
+            ><input type="radio" name="q20" value="timeout /t 5" /> timeout /t
+            5</label
+          ><br />
+          <p><strong>21. ¿Qué comando permite comparar cadenas?</strong></p>
+          <label
+            ><input type="radio" name="q21" value="compare" /> compare</label
+          ><br />
+          <label><input type="radio" name="q21" value="if" /> if</label><br />
+          <p><strong>22. ¿Qué comando permite hacer un bucle?</strong></p>
+          <label><input type="radio" name="q22" value="loop" /> loop</label
+          ><br />
+          <label><input type="radio" name="q22" value="for" /> for</label><br />
+          <p>
+            <strong
+              >23. ¿Qué comando muestra el contenido de un archivo?</strong
+            >
+          </p>
+          <label><input type="radio" name="q23" value="show" /> show</label
+          ><br />
+          <label><input type="radio" name="q23" value="type" /> type</label
+          ><br />
+          <p>
+            <strong>24. ¿Qué comando permite cambiar de directorio?</strong>
+          </p>
+          <label
+            ><input type="radio" name="q24" value="changedir" />
+            changedir</label
+          ><br />
+          <label><input type="radio" name="q24" value="cd" /> cd</label><br />
+          <p>
+            <strong
+              >25. ¿Qué comando detiene la ejecución del script
+              inmediatamente?</strong
+            >
+          </p>
+          <label><input type="radio" name="q25" value="stop" /> stop</label
+          ><br />
+          <label><input type="radio" name="q25" value="exit" /> exit</label
+          ><br />
+          <br />
+          <button type="button" onclick="checkQuiz()" class="btn-quiz">
+            Enviar respuestas
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal del DIPLOMA -->
+    <div id="diplomaModal" class="modal-bg">
+      <div class="modal-box">
+        <span class="close-btn" onclick="closeDiploma()">×</span>
+        <h2>Diploma del Curso BAT</h2>
+        <p id="diplomaText" style="font-size: 1.2rem; margin-top: 15px"></p>
+      </div>
+    </div>
+
+    <!-- Modal pedir nombre -->
+    <div id="nameModal" class="modal-bg">
+      <div class="modal-box">
+        <span class="close-btn" onclick="closeName()">×</span>
+        <h3>¡Perfecto!</h3>
+        <p>Introduce tu nombre para generar tu diploma.</p>
+        <input
+          type="text"
+          id="studentName"
+          placeholder="Tu nombre"
+          style="
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+          "
+        />
+        <br /><br />
+        <button class="btn-quiz" onclick="generateDiploma()">
+          Generar diploma
+        </button>
+      </div>
+    </div>
+
+    <!-- JavaScript propio -->
+    <script src="../main.js"></script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {

@@ -39,140 +39,41 @@
       <!-- Hero de la página -->
       <section class="page-hero page-hero-juego">
         <div class="container">
-          <h1 class="page-hero-title">Juego Educativo</h1>
+          <h1 class="page-hero-title">Juego Piedra, Papel o Tijera</h1>
           <p class="page-hero-subtitle">
-            Refuerza tus conocimientos de forma divertida e interactiva
+            Prueba el juego que aprenderás a desarrollar paso a paso en el curso
+            de Batch, directamente desde esta consola y diviertete un poco.
           </p>
         </div>
       </section>
 
-      <!-- Estado del proyecto -->
-      <section class="game-status">
-        <div class="container">
-          <div class="status-card">
-            <div class="status-icon">🚀</div>
-            <h2 class="status-title">Proyecto en Desarrollo</h2>
-            <p class="status-description">Estamos trabajando en un juego.</p>
-            <div class="status-badge">Próximamente</div>
-          </div>
+      <br>
+      <div class="game-hint">
+        <span class="hint-symbol">&gt;</span>
+        <p>
+          Haz clic dentro de la consola para activar el cursor y empezar a
+          escribir. Una vez dentro, introduce los comandos y juega directamente
+          desde el terminal.
+        </p>
+      </div>
+
+      <div class="cmd-container">
+        <div id="cmdOutput" class="cmd-output"></div>
+
+        <div class="cmd-input-area">
+          <span class="cmd-prefix">C:\JuegoBAT></span>
+          <input type="text" id="cmdInput" autocomplete="off" />
         </div>
-      </section>
-
-      <!-- Características del juego -->
-      <section class="game-features">
-        <div class="container">
-          <h2 class="section-title">¿Qué incluirá el juego?</h2>
-
-          <div class="features-grid">
-            <!-- Característica 1 -->
-            <article class="game-feature-card">
-              <div class="feature-icon">❓</div>
-              <h3 class="feature-title">Preguntas y Respuestas</h3>
-              <p class="feature-description">
-                Responde preguntas de opción múltiple sobre la historia de los
-                sistemas operativos, conceptos fundamentales y comandos de
-                Batch.
-              </p>
-            </article>
-
-            <!-- Característica 2 -->
-            <article class="game-feature-card">
-              <div class="feature-icon">⏱️</div>
-              <h3 class="feature-title">Modo Contrarreloj</h3>
-              <p class="feature-description">
-                Pon a prueba tu velocidad y conocimiento respondiendo
-                correctamente en el menor tiempo posible. Ideal para desafíos y
-                competencias.
-              </p>
-            </article>
-
-            <!-- Característica 3 -->
-            <article class="game-feature-card">
-              <div class="feature-icon">🏆</div>
-              <h3 class="feature-title">Sistema de Puntuación</h3>
-              <p class="feature-description">
-                Acumula puntos por respuestas correctas, racha de aciertos
-                consecutivos y bonificaciones por tiempo. Compite por el mejor
-                puntaje.
-              </p>
-            </article>
-
-            <!-- Característica 4 -->
-            <article class="game-feature-card">
-              <div class="feature-icon">📊</div>
-              <h3 class="feature-title">Niveles Progresivos</h3>
-              <p class="feature-description">
-                Comienza con preguntas básicas y avanza hacia desafíos más
-                complejos que requieren conocimiento profundo de sistemas
-                operativos y scripting.
-              </p>
-            </article>
-
-            <!-- Característica 5 -->
-            <article class="game-feature-card">
-              <div class="feature-icon">🎯</div>
-              <h3 class="feature-title">Desafíos de Código</h3>
-              <p class="feature-description">
-                Completa scripts Batch, identifica errores en código y resuelve
-                problemas prácticos de programación en desafíos interactivos.
-              </p>
-            </article>
-
-            <!-- Característica 6 -->
-            <article class="game-feature-card">
-              <div class="feature-icon">📈</div>
-              <h3 class="feature-title">Estadísticas y Progreso</h3>
-              <p class="feature-description">
-                Visualiza tu rendimiento, áreas de mejora y progreso a lo largo
-                del tiempo. Identifica temas que necesitas reforzar.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Sección de avance -->
-      <section class="game-progress">
-        <div class="container">
-          <div class="progress-card">
-            <h2 class="progress-title">Estado de Desarrollo</h2>
-            <p class="progress-description">
-              Actualmente el juego se encuentra en fase de diseño y desarrollo
-              inicial. Estamos trabajando en la arquitectura de preguntas,
-              sistema de puntuación y mecánicas de juego para ofrecerte la mejor
-              experiencia educativa posible.
-            </p>
-            <div class="progress-info">
-              <div class="progress-item">
-                <span class="progress-label">Diseño conceptual</span>
-                <span class="progress-status completed">✓ Completado</span>
-              </div>
-              <div class="progress-item">
-                <span class="progress-label">Base de preguntas</span>
-                <span class="progress-status in-progress">⟳ En progreso</span>
-              </div>
-              <div class="progress-item">
-                <span class="progress-label">Interfaz interactiva</span>
-                <span class="progress-status planned">○ Planificado</span>
-              </div>
-              <div class="progress-item">
-                <span class="progress-label">Sistema de puntuación</span>
-                <span class="progress-status planned">○ Planificado</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
 
       <!-- Call to action -->
       <section class="game-cta">
         <div class="container">
           <div class="cta-box">
-            <h2 class="cta-title">Mientras tanto...</h2>
+            <h2 class="cta-title">Continúa tu aprendizaje</h2>
             <p class="cta-text">
-              Aprovecha el tiempo también explorando y estudiando
-              la historia de los sistemas operativos y completa el curso de
-              Batch.
+              Sigue avanzando explorando la historia de los sistemas operativos
+              o perfeccionando tus conocimientos en Batch.
             </p>
             <div class="cta-buttons">
               <a href="historia.html" class="cta-button cta-button-primary"
@@ -187,7 +88,7 @@
       </section>
     </main>
 
-    <!-- Footer minimalista -->
+    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <p class="footer-text">
@@ -205,5 +106,8 @@
         </p>
       </div>
     </footer>
+
+    <!-- JavaScript propio -->
+    <script src="../main.js"></script>
   </body>
 </html>

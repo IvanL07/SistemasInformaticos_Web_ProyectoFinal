@@ -25,10 +25,7 @@
         <ul class="nav-menu">
           <li><a href="../index.html" class="nav-link">Inicio</a></li>
           <li>
-            <a
-              href="historia.html"
-              class="nav-link active"
-              aria-current="page"
+            <a href="historia.html" class="nav-link active" aria-current="page"
               >Historia</a
             >
           </li>
@@ -405,10 +402,17 @@
             </p>
           </div>
         </div>
+
+        <!-- BOTÓN QUIZ -->
+        <div class="quiz-btn-container">
+          <button id="openQuizBtn" class="btn-quiz">
+            Haz un QUIZ para comprobar lo que has aprendido
+          </button>
+        </div>
       </section>
     </main>
 
-    <!-- Footer minimalista -->
+    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <p class="footer-text">
@@ -426,5 +430,311 @@
         </p>
       </div>
     </footer>
+
+    <!-- Modal del QUIZ (Historia) -->
+    <div id="quizModal" class="modal-bg">
+      <div class="modal-box">
+        <span class="close-btn" onclick="closeQuiz()">×</span>
+        <h3>QUIZ de Historia de los Sistemas Operativos</h3>
+        <p>
+          Responde correctamente todas las preguntas para obtener tu diploma.
+        </p>
+
+        <form id="quizForm">
+          <p><strong>1. ¿En qué año se lanzó IBM System/360?</strong></p>
+          <label><input type="radio" name="q1" value="1964" /> 1964</label
+          ><br />
+          <label><input type="radio" name="q1" value="1969" /> 1969</label
+          ><br />
+
+          <p><strong>2. IBM System/360 destacó por permitir...</strong></p>
+          <label
+            ><input type="radio" name="q2" value="compatibilidad" />
+            compatibilidad entre diferentes modelos</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="solo_un_modelo" /> funcionar
+            solo en un único modelo</label
+          ><br />
+
+          <p><strong>3. System/360 introdujo conceptos como...</strong></p>
+          <label
+            ><input type="radio" name="q3" value="multiprogramacion" />
+            multiprogramación y memoria virtual</label
+          ><br />
+          <label
+            ><input type="radio" name="q3" value="solo_graficos" /> únicamente
+            interfaz gráfica</label
+          ><br />
+
+          <p><strong>4. UNIX fue desarrollado por...</strong></p>
+          <label
+            ><input type="radio" name="q4" value="thompson_ritchie" /> Ken
+            Thompson y Dennis Ritchie</label
+          ><br />
+          <label
+            ><input type="radio" name="q4" value="jobs_wozniak" /> Steve Jobs y
+            Steve Wozniak</label
+          ><br />
+
+          <p><strong>5. UNIX nació en los laboratorios...</strong></p>
+          <label
+            ><input type="radio" name="q5" value="bell_labs" /> Bell Labs
+            (AT&amp;T)</label
+          ><br />
+          <label
+            ><input type="radio" name="q5" value="ibm_labs" /> IBM Labs</label
+          ><br />
+
+          <p><strong>6. La filosofía de UNIX se basa en...</strong></p>
+          <label
+            ><input type="radio" name="q6" value="simplicidad" /> simplicidad,
+            portabilidad y modularidad</label
+          ><br />
+          <label
+            ><input type="radio" name="q6" value="solo_gui" /> depender de una
+            interfaz gráfica</label
+          ><br />
+
+          <p><strong>7. Xerox Alto fue pionero por usar...</strong></p>
+          <label
+            ><input type="radio" name="q7" value="gui_raton" /> interfaz gráfica
+            con ventanas e iconos y ratón</label
+          ><br />
+          <label
+            ><input type="radio" name="q7" value="solo_comandos" /> solo línea
+            de comandos</label
+          ><br />
+
+          <p><strong>8. Xerox Alto inspiró directamente a...</strong></p>
+          <label
+            ><input type="radio" name="q8" value="mac_windows" /> Apple
+            Macintosh y más tarde Windows</label
+          ><br />
+          <label
+            ><input type="radio" name="q8" value="linux_android" /> Linux y
+            Android</label
+          ><br />
+
+          <p><strong>9. MS-DOS fue lanzado por Microsoft en...</strong></p>
+          <label><input type="radio" name="q9" value="1981" /> 1981</label
+          ><br />
+          <label><input type="radio" name="q9" value="1991" /> 1991</label
+          ><br />
+
+          <p><strong>10. MS-DOS era principalmente...</strong></p>
+          <label
+            ><input type="radio" name="q10" value="linea_comandos" /> un sistema
+            basado en línea de comandos</label
+          ><br />
+          <label
+            ><input type="radio" name="q10" value="tactil" /> un sistema táctil
+            para móviles</label
+          ><br />
+
+          <p>
+            <strong
+              >11. Apple Lisa fue el primer sistema comercial con...</strong
+            >
+          </p>
+          <label
+            ><input type="radio" name="q11" value="gui_multitarea" /> interfaz
+            gráfica avanzada y multitarea cooperativa</label
+          ><br />
+          <label
+            ><input type="radio" name="q11" value="solo_texto" /> interfaz solo
+            de texto</label
+          ><br />
+
+          <p><strong>12. Apple Lisa fue el precursor directo del...</strong></p>
+          <label
+            ><input type="radio" name="q12" value="macintosh" />
+            Macintosh</label
+          ><br />
+          <label
+            ><input type="radio" name="q12" value="windows_nt" /> Windows
+            NT</label
+          ><br />
+
+          <p><strong>13. Windows 95 introdujo...</strong></p>
+          <label
+            ><input type="radio" name="q13" value="inicio_tareas" /> menú de
+            inicio y barra de tareas</label
+          ><br />
+          <label
+            ><input type="radio" name="q13" value="app_store" /> App
+            Store</label
+          ><br />
+
+          <p><strong>14. Linux fue creado por Linus Torvalds en...</strong></p>
+          <label><input type="radio" name="q14" value="1991" /> 1991</label
+          ><br />
+          <label><input type="radio" name="q14" value="2001" /> 2001</label
+          ><br />
+
+          <p><strong>15. Linux se describe como...</strong></p>
+          <label
+            ><input type="radio" name="q15" value="kernel_unix" /> un kernel
+            open source inspirado en UNIX</label
+          ><br />
+          <label
+            ><input type="radio" name="q15" value="solo_gui" /> un sistema solo
+            con interfaz gráfica</label
+          ><br />
+
+          <p><strong>16. Windows NT se diseñó desde cero como...</strong></p>
+          <label
+            ><input type="radio" name="q16" value="profesional" /> sistema
+            profesional con seguridad y redes</label
+          ><br />
+          <label
+            ><input type="radio" name="q16" value="juego" /> un
+            videojuego</label
+          ><br />
+
+          <p>
+            <strong
+              >17. Windows 2000 fue muy adoptado en empresas por...</strong
+            >
+          </p>
+          <label
+            ><input type="radio" name="q17" value="active_directory" />
+            estabilidad y soporte para Active Directory</label
+          ><br />
+          <label
+            ><input type="radio" name="q17" value="solo_diseno" /> su diseño
+            minimalista</label
+          ><br />
+
+          <p><strong>18. Mac OS X (macOS) se basa en...</strong></p>
+          <label
+            ><input type="radio" name="q18" value="unix_darwin" /> UNIX
+            (Darwin/BSD)</label
+          ><br />
+          <label><input type="radio" name="q18" value="dos" /> MS-DOS</label
+          ><br />
+
+          <p><strong>19. iOS introdujo (entre otras cosas)...</strong></p>
+          <label
+            ><input type="radio" name="q19" value="multitouch_appstore" />
+            multitouch y App Store</label
+          ><br />
+          <label
+            ><input type="radio" name="q19" value="menu_inicio" /> menú de
+            inicio</label
+          ><br />
+
+          <p><strong>20. Android fue lanzado por Google en...</strong></p>
+          <label><input type="radio" name="q20" value="2008" /> 2008</label
+          ><br />
+          <label><input type="radio" name="q20" value="2015" /> 2015</label
+          ><br />
+
+          <p><strong>21. Android está basado en...</strong></p>
+          <label
+            ><input type="radio" name="q21" value="kernel_linux" /> el kernel
+            Linux y es open source</label
+          ><br />
+          <label
+            ><input type="radio" name="q21" value="kernel_nt" /> el kernel de
+            Windows NT</label
+          ><br />
+
+          <p>
+            <strong
+              >22. Windows 8 buscó unificar la experiencia entre...</strong
+            >
+          </p>
+          <label
+            ><input type="radio" name="q22" value="pc_tablets" /> PC y tablets
+            (interfaz Metro)</label
+          ><br />
+          <label
+            ><input type="radio" name="q22" value="movil_tv" /> móvil y
+            TV</label
+          ><br />
+
+          <p><strong>23. Windows 10 destacó por...</strong></p>
+          <label
+            ><input type="radio" name="q23" value="actualizaciones" />
+            actualizaciones continuas e integración con la nube</label
+          ><br />
+          <label
+            ><input type="radio" name="q23" value="solo_cli" /> volver a solo
+            línea de comandos</label
+          ><br />
+
+          <p><strong>24. Windows 11 añadió compatibilidad con...</strong></p>
+          <label
+            ><input type="radio" name="q24" value="apps_android" /> aplicaciones
+            Android</label
+          ><br />
+          <label
+            ><input type="radio" name="q24" value="apps_ios" /> aplicaciones
+            iOS</label
+          ><br />
+
+          <p>
+            <strong
+              >25. Según la conclusión, la próxima generación está marcada
+              por...</strong
+            >
+          </p>
+          <label
+            ><input type="radio" name="q25" value="nube_contenedores_ia" />
+            nube, contenedores e inteligencia artificial</label
+          ><br />
+          <label
+            ><input type="radio" name="q25" value="disquetes" /> disquetes y
+            cintas magnéticas</label
+          ><br />
+
+          <br />
+          <button type="button" onclick="checkQuiz()" class="btn-quiz">
+            Enviar respuestas
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal del DIPLOMA -->
+    <div id="diplomaModal" class="modal-bg">
+      <div class="modal-box">
+        <span class="close-btn" onclick="closeDiploma()">×</span>
+        <h2>Diploma de Historia de los Sistemas Operativos</h2>
+        <p id="diplomaText" style="font-size: 1.2rem; margin-top: 15px"></p>
+      </div>
+    </div>
+
+    <!-- Modal pedir nombre -->
+    <div id="nameModal" class="modal-bg">
+      <div class="modal-box">
+        <span class="close-btn" onclick="closeName()">×</span>
+        <h3>¡Perfecto!</h3>
+        <p>Introduce tu nombre para generar tu diploma.</p>
+        <input
+          type="text"
+          id="studentName"
+          placeholder="Tu nombre"
+          style="
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+          "
+        />
+        <button
+          class="btn-quiz"
+          style="margin-top: 15px; width: 100%"
+          onclick="generateDiploma()"
+        >
+          Generar diploma
+        </button>
+      </div>
+    </div>
+
+    <!-- JavaScript propio -->
+    <script src="../main.js"></script>
   </body>
 </html>
