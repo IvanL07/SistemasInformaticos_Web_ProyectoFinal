@@ -1313,7 +1313,6 @@ BLOQUEO DE COPIA - TEXTO BAT
   margin-top: 30px;
 }
 
-
 /* Botón principal */
 .btn-quiz {
   background-color: #00bcd4;
@@ -1325,7 +1324,7 @@ BLOQUEO DE COPIA - TEXTO BAT
   font-weight: 600;
   cursor: pointer;
   transition: 0.25s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   margin-top: 25px;
 }
 
@@ -1339,7 +1338,7 @@ BLOQUEO DE COPIA - TEXTO BAT
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   justify-content: center;
   align-items: center;
@@ -1353,17 +1352,23 @@ BLOQUEO DE COPIA - TEXTO BAT
   max-width: 90%;
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   animation: fadeIn 0.3s ease;
 
-  /* SCROLL */ 
-  max-height: 80vh; 
+  /* SCROLL */
+  max-height: 80vh;
   overflow-y: auto;
 }
 
 @keyframes fadeIn {
-  from {opacity: 0; transform: scale(0.95);}
-  to {opacity: 1; transform: scale(1);}
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Botón cerrar */
@@ -1391,7 +1396,7 @@ BLOQUEO DE COPIA - TEXTO BAT
   border-radius: 14px;
   padding: 30px;
   text-align: center;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   max-height: 75vh;
   overflow-y: auto;
   animation: fadeIn 0.3s ease;
@@ -1511,7 +1516,6 @@ BLOQUEO DE COPIA - TEXTO BAT
 .game-hint p {
   margin: 0;
 }
-
 
 /* ===================================
    FOOTER
@@ -1747,4 +1751,249 @@ button:focus-visible {
 /* Scroll suave en navegación interna */
 html {
   scroll-padding-top: 80px;
+}
+
+/* ===========================
+   NAVBAR - BOTÓN MODO OSCURO
+   =========================== */
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Botón toggle */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 0.4rem;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.15);
+}
+
+/* =========================================================
+   MODO OSCURO
+   ========================================================= */
+
+body.dark {
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+/* ---------- NAV ---------- */
+body.dark .header {
+  background: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+body.dark .nav-link {
+  color: #e5e7eb;
+}
+
+body.dark .nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark .nav-link.active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- SECCIONES (EVITA ZONAS BLANCAS) ---------- */
+body.dark .features-section,
+body.dark .timeline-section,
+body.dark .info-section,
+body.dark .course-intro,
+body.dark .course-level,
+body.dark .course-conclusion,
+body.dark .conclusion-section,
+body.dark .game-status,
+body.dark .game-features,
+body.dark .game-objectives,
+body.dark .game-progress,
+body.dark .game-cta {
+  background: #0b1220 !important;
+}
+
+/* ---------- CAJAS / CARDS ---------- */
+body.dark .feature-card,
+body.dark .timeline-content,
+body.dark .topic-card,
+body.dark .conclusion-box,
+body.dark .cta-box,
+body.dark .objectives-box,
+body.dark .progress-card,
+body.dark .status-card,
+body.dark .curso-bat {
+  background: #0f172a !important;
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- TEXTOS ---------- */
+body.dark .section-title,
+body.dark .info-title,
+body.dark .intro-title,
+body.dark .level-title,
+body.dark .progress-title,
+body.dark .status-title,
+body.dark .page-hero-title {
+  color: #ffffff !important;
+}
+
+body.dark .card-description,
+body.dark .timeline-description,
+body.dark .topic-description,
+body.dark .info-text,
+body.dark .conclusion-text,
+body.dark .cta-text,
+body.dark .objectives-text,
+body.dark .progress-description,
+body.dark .intro-text,
+body.dark .level-description,
+body.dark .footer-subtext {
+  color: #cbd5e1 !important;
+}
+
+/* TÍTULOS azules del index/curso/historia (en oscuro se “apagan”) */
+body.dark .card-title,
+body.dark .timeline-title,
+body.dark .topic-title,
+body.dark .tips-title,
+body.dark .cta-title,
+body.dark .conclusion-title {
+  color: #93c5fd !important;
+}
+
+/* ---------- TAGS / CODE INLINE ---------- */
+body.dark .timeline-tag,
+body.dark .topic-list code {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #93c5fd !important;
+}
+
+/* ---------- CURSO BAT: PRE / CODE ---------- */
+body.dark .curso-bat p,
+body.dark .curso-bat li {
+  color: #cbd5e1 !important;
+}
+
+body.dark .curso-bat pre {
+  background: #0b1220 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #e5e7eb !important;
+}
+
+/* =======================
+   FIX 1: texto dentro de TARJETAS (topic-card / feature-card)
+   (en algunas secciones se quedaba “apagado”)
+   ======================= */
+body.dark .topic-card p,
+body.dark .topic-card li,
+body.dark .feature-card p,
+body.dark .feature-card li {
+  color: #e5e7eb !important;
+}
+
+/* iconos de lista en tarjetas (si usas .list-icon) */
+body.dark .topic-card .list-icon,
+body.dark .feature-card .list-icon {
+  color: #93c5fd !important;
+}
+
+/* =======================
+   FIX 2: cuadro blanco “Consejos...” (conclusion-tips) -> oscuro
+   ======================= */
+body.dark .conclusion-tips {
+  background: #0f172a !important;
+  border-left: 4px solid #93c5fd !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .conclusion-tips .tips-title {
+  color: #93c5fd !important;
+}
+
+body.dark .conclusion-tips .tips-list li {
+  color: #e5e7eb !important;
+}
+
+/* ---------- SEPARACIÓN VISUAL ENTRE NIVELES ---------- */
+body.dark .level-basico {
+  background: linear-gradient(to bottom, #0b1220 0%, #0a1324 100%) !important;
+}
+body.dark .level-intermedio {
+  background: linear-gradient(to bottom, #0a1422 0%, #09101d 100%) !important;
+}
+body.dark .level-avanzado {
+  background: linear-gradient(to bottom, #0b1220 0%, #0c1526 100%) !important;
+}
+
+/* separador sutil extra (por si lo notas “todo igual”) */
+body.dark .course-level {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =======================
+   FIX 3: JUEGO (game-hint) -> VOLVER A COMO ANTES
+   - quitar texto negro forzado
+   - mantener el estilo original del bloque
+   ======================= */
+body.dark .game-hint {
+  /* deja el bloque como estaba, sin forzar “modo claro” */
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: inherit !important;
+  border-left: 4px solid #22c55e !important;
+}
+
+body.dark .game-hint .hint-symbol {
+  color: #22c55e !important;
+}
+
+body.dark .game-hint p {
+  color: inherit !important;
+}
+
+/* =======================
+   FIX 4: CONSOLA CMD (cmdInput) -> SIN CAJA / SIN FRANJA
+   El input heredaba estilos globales de input en dark.
+   ======================= */
+body.dark .cmd-container input,
+body.dark #cmdInput {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: #00ff00 !important;
+}
+
+/* opcional: el prefijo también verde siempre */
+body.dark .cmd-prefix {
+  color: #00ff00 !important;
+}
+
+/* ---------- MODALES ---------- */
+body.dark .modal-box {
+  background: #0f172a !important;
+  color: #e5e7eb !important;
+}
+
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background: #0b1220 !important;
+  color: #e5e7eb !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+}
+
+/* ---------- HERO (index) ---------- */
+body.dark .hero-background {
+  background: linear-gradient(135deg, #020617 0%, #1e293b 100%) !important;
 }

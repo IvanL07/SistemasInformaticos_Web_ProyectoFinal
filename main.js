@@ -1,10 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // =======================
+  // QUIZ: abrir modal
+  // =======================
   const openQuizBtn = document.getElementById("openQuizBtn");
   const quizModal = document.getElementById("quizModal");
 
   if (openQuizBtn && quizModal) {
     openQuizBtn.addEventListener("click", () => {
       quizModal.style.display = "flex";
+    });
+  }
+
+  // =======================
+  // MODO OSCURO / CLARO
+  // =======================
+  const toggle = document.getElementById("themeToggle");
+
+  function setTheme(theme) {
+    document.body.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
+    if (toggle) toggle.textContent = theme === "dark" ? "☀️" : "🌙";
+  }
+
+  // Aplicar al cargar
+  setTheme(localStorage.getItem("theme") || "light");
+
+  // Click
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const newTheme = document.body.classList.contains("dark")
+        ? "light"
+        : "dark";
+      setTheme(newTheme);
     });
   }
 });
