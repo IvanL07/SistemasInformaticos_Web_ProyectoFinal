@@ -1203,6 +1203,416 @@ goto inicio
   </pre
               >
             </div>
+            <div class="descarga-container">
+              <a
+                href="https://github.com/IvanL07/SistemasInformaticos_Web_ProyectoFinal/raw/refs/heads/main/zips_para_descargar/Batch_de_Mantenimiento.zip"
+                download
+              >
+                <button class="btn-descargar">
+                  Descargar Batch de Mantenimiento del PC Completo (ZIP)
+                </button>
+              </a>
+            </div>
+            <div class="curso-bat no-copy">
+              <h3 class="tips-title">Juego en Batch: Piedra, Papel o Tijera</h3>
+
+              <p>
+                Además del batch de mantenimiento, vamos a crear un pequeño
+                juego en Batch:
+                <strong>Piedra, Papel o Tijera</strong>. Con este ejemplo verás
+                cómo usar variables, condiciones, números aleatorios y menús
+                interactivos en la consola.
+              </p>
+
+              <h4>1. ¿Qué hace este juego?</h4>
+              <p>
+                El juego te muestra un menú, te permite elegir entre
+                <strong>piedra</strong>, <strong>papel</strong> o
+                <strong>tijera</strong>, y el ordenador elige una opción al
+                azar. Después compara ambas elecciones y te dice si has ganado,
+                perdido o empatado.
+              </p>
+
+              <h4>2. Cómo guardar el archivo del juego</h4>
+              <ul>
+                <li>Abre el <strong>Bloc de notas</strong>.</li>
+                <li>
+                  Escribe el código que ves más abajo (a mano, sin copiar y
+                  pegar).
+                </li>
+                <li>
+                  Guárdalo como <strong>juego_piedra_papel_tijera.bat</strong>.
+                </li>
+                <li>
+                  Asegúrate de que el tipo de archivo es
+                  <strong>Todos los archivos</strong> y no <code>.txt</code>.
+                </li>
+              </ul>
+
+              <hr />
+
+              <h4>3. Código del juego explicado por partes</h4>
+
+              <p><strong>3.1 Configuración inicial de la ventana</strong></p>
+              <pre class="no-copy">
+@echo off
+chcp 65001 > nul
+title Juego - Piedra, Papel o Tijera
+color 1F
+mode con: cols=80 lines=25
+  </pre
+              >
+              <p>
+                <strong>@echo off</strong> oculta los comandos para que la
+                salida sea más limpia. <strong>chcp 65001</strong> configura la
+                consola en UTF-8 para mostrar bien los acentos.
+                <strong>title</strong>, <strong>color</strong> y
+                <strong>mode</strong> ajustan el título, el color del texto y el
+                tamaño de la ventana.
+              </p>
+
+              <p><strong>3.2 Menú principal del juego</strong></p>
+              <pre class="no-copy">
+:inicio
+cls
+echo ==========================================
+echo        JUEGO: PIEDRA, PAPEL O TIJERA
+echo ==========================================
+echo.
+echo 1. Jugar
+echo 2. Ver instrucciones
+echo 3. Salir
+echo.
+set /p opcion="Selecciona una opción (1-3): "
+
+if "%opcion%"=="1" goto jugar
+if "%opcion%"=="2" goto instrucciones
+if "%opcion%"=="3" goto salir
+goto inicio
+  </pre
+              >
+              <p>
+                Aquí se muestra el menú principal. Según el número que escribas,
+                el script salta a
+                <code>:jugar</code>, <code>:instrucciones</code> o
+                <code>:salir</code>. Si escribes algo incorrecto, vuelve a
+                <code>:inicio</code>.
+              </p>
+
+              <p><strong>3.3 Instrucciones del juego</strong></p>
+              <pre class="no-copy">
+:instrucciones
+cls
+echo ================= INSTRUCCIONES =================
+echo.
+echo - Elige entre: piedra, papel o tijera.
+echo - El ordenador elegirá una opción al azar.
+echo - Reglas:
+echo     * Piedra gana a tijera.
+echo     * Tijera gana a papel.
+echo     * Papel gana a piedra.
+echo.
+echo Pulsa una tecla para volver al menú...
+pause > nul
+goto inicio
+  </pre
+              >
+
+              <p><strong>3.4 Lógica principal del juego</strong></p>
+              <p>
+                Esta es la parte más importante del juego. Aquí se gestiona la
+                entrada del jugador, la validación, la generación aleatoria, la
+                comparación de jugadas y el resultado final. Vamos a desglosarlo
+                todo para que entiendas exactamente qué hace cada comando.
+              </p>
+              <!-- 3.4.1 -->
+              <h5>3.4.1 Inicio de la partida</h5>
+              <pre class="no-copy">
+:jugar 
+cls 
+echo ============ NUEVA PARTIDA ============ 
+echo. 
+echo Escribe tu eleccion: piedra, papel o tijera 
+set /p jugador="Tu eleccion: "
+</pre
+              >
+              <p>
+                <strong>:jugar</strong> marca el inicio de cada partida.
+                <strong>cls</strong> limpia la pantalla para empezar desde cero.
+                <strong>set /p</strong> muestra un mensaje y guarda lo que
+                escriba el usuario en la variable <code>jugador</code>.
+              </p>
+
+              <!-- 3.4.2 -->
+              <h5>3.4.2 Normalización del texto</h5>
+              <pre class="no-copy">
+set jugador=%jugador:A=a%
+set jugador=%jugador:E=e%
+set jugador=%jugador:I=i%
+set jugador=%jugador:O=o%
+set jugador=%jugador:U=u%
+</pre
+              >
+              <p>
+                Batch no tiene un comando para convertir texto a minúsculas, así
+                que se hace reemplazando cada vocal mayúscula por su versión
+                minúscula. Esto permite que el usuario escriba <em>PIEDRA</em>,
+                <em>Piedra</em> o <em>pIeDrA</em> y funcione igual.
+              </p>
+              <!-- 3.4.3 -->
+              <h5>3.4.3 Validación de la entrada</h5>
+              <pre class="no-copy">
+if /I not "%jugador%"=="piedra" if /I not "%jugador%"=="papel" if /I not "%jugador%"=="tijera" (
+    echo.
+    echo Opcion no valida. Debes escribir piedra, papel o tijera.
+    echo.
+    pause
+    goto jugar
+)
+</pre
+              >
+              <p>
+                Aquí comprobamos si el usuario ha escrito una opción válida.
+                <strong>/I</strong> hace que la comparación ignore
+                mayúsculas/minúsculas. Si no coincide con ninguna de las tres
+                opciones, se muestra un mensaje de error y se vuelve a
+                <code>:jugar</code>.
+              </p>
+              <!-- 3.4.4 -->
+              <h5>3.4.4 Generación de la jugada del ordenador</h5>
+              <pre class="no-copy"> set /a num=%random% %% 3 </pre>
+              <p>
+                <strong>%random%</strong> genera un número aleatorio entre 0 y
+                32767. <strong>%%</strong> es el operador módulo.
+                <strong>%random% %% 3</strong> devuelve 0, 1 o 2. Perfecto para
+                representar piedra, papel o tijera.
+              </p>
+              <pre class="no-copy">
+if %num%==0 set pc=piedra
+if %num%==1 set pc=papel
+if %num%==2 set pc=tijera
+</pre
+              >
+              <p>
+                Según el número generado, asignamos la jugada del ordenador a la
+                variable <code>pc</code>.
+              </p>
+              <!-- 3.4.5 -->
+              <h5>3.4.5 Mostrar la jugada del ordenador</h5>
+              <pre class="no-copy">
+echo.
+echo El ordenador ha elegido: %pc%
+echo.
+</pre
+              >
+              <p>
+                Simplemente mostramos la elección del ordenador para que el
+                jugador la vea.
+              </p>
+              <!-- 3.4.6 -->
+              <h5>3.4.6 Comprobación de empate</h5>
+              <pre class="no-copy"> if /I "%jugador%"=="%pc%" goto empate</pre>
+              <p>
+                Si ambos han elegido lo mismo, el resultado es un empate y
+                saltamos a la etiqueta <code>:empate</code>.
+              </p>
+              <!-- 3.4.7 -->
+              <h5>3.4.7 Condiciones de victoria del jugador</h5>
+              <pre class="no-copy">
+if /I "%jugador%"=="piedra" if /I "%pc%"=="tijera" goto ganas
+if /I "%jugador%"=="tijera" if /I "%pc%"=="papel" goto ganas
+if /I "%jugador%"=="papel" if /I "%pc%"=="piedra" goto ganas
+</pre
+              >
+              <p>
+                Estas son las tres combinaciones en las que el jugador gana.
+              </p>
+              <p>Si se cumple alguna, saltamos a <code>:ganas</code>.</p>
+              <!-- 3.4.8 -->
+              <h5>3.4.8 Si no es empate ni victoria → derrota</h5>
+              <pre class="no-copy"> goto pierdes </pre>
+              <p>
+                Si no se cumple ninguna condición anterior, el jugador pierde
+                automáticamente.
+              </p>
+
+              <p>
+                <strong>3.5 Mensajes de resultado y de repetir partida</strong>
+              </p>
+              <pre class="no-copy">
+:empate
+echo Resultado: EMPATE.
+echo.
+goto preguntar_repetir
+
+:ganas
+echo Resultado: ¡HAS GANADO!
+echo.
+goto preguntar_repetir
+
+:pierdes
+echo Resultado: HAS PERDIDO.
+echo.
+goto preguntar_repetir
+
+:preguntar_repetir
+set /p otra="¿Quieres jugar otra vez? (s/n): "
+if /I "%otra%"=="s" goto jugar
+if /I "%otra%"=="n" goto inicio
+echo Opcion no valida.
+goto preguntar_repetir
+</pre
+              >
+              <p>
+                Aquí preguntamos si el jugador quiere repetir la partida. Si
+                escribe “s”, vuelve a <code>:jugar</code>. Si escribe “n”,
+                vuelve al menú principal. Si escribe otra cosa, se repite la
+                pregunta.
+              </p>
+              <p><strong>3.6 Salir del juego</strong></p>
+              <pre class="no-copy">
+:salir
+cls
+echo Gracias por jugar a Piedra, Papel o Tijera.
+echo.
+pause
+exit
+</pre
+              >
+              <p>
+                Si el usuario escoge en el menú principal la opción de salir se
+                ejecuta el bloque anterior, que muestra un mensaje de despedida
+                y cierra la ventana del juego.
+              </p>
+              <hr />
+
+              <h4>4. Resumen del código completo del juego</h4>
+              <p>
+                Aquí tienes el código completo del juego para que puedas
+                revisarlo de una sola vez.
+              </p>
+
+              <pre class="no-copy">
+@echo off
+chcp 65001 > nul
+title Juego - Piedra, Papel o Tijera
+color 1F
+mode con: cols=80 lines=25
+
+:inicio
+cls
+echo ==========================================
+echo        JUEGO: PIEDRA, PAPEL O TIJERA
+echo ==========================================
+echo.
+echo 1. Jugar
+echo 2. Ver instrucciones
+echo 3. Salir
+echo.
+set /p opcion="Selecciona una opción (1-3): "
+
+if "%opcion%"=="1" goto jugar
+if "%opcion%"=="2" goto instrucciones
+if "%opcion%"=="3" goto salir
+goto inicio
+
+:instrucciones
+cls
+echo ================= INSTRUCCIONES =================
+echo.
+echo - Elige entre: piedra, papel o tijera.
+echo - El ordenador elegirá una opción al azar.
+echo - Reglas:
+echo     * Piedra gana a tijera.
+echo     * Tijera gana a papel.
+echo     * Papel gana a piedra.
+echo.
+echo Pulsa una tecla para volver al menú...
+pause > nul
+goto inicio
+
+:jugar
+cls
+echo ============ NUEVA PARTIDA ============
+echo.
+echo Escribe tu eleccion: piedra, papel o tijera
+set /p jugador="Tu eleccion: "
+
+REM Normalizamos a minusculas (truco simple)
+set jugador=%jugador:A=a%
+set jugador=%jugador:E=e%
+set jugador=%jugador:I=i%
+set jugador=%jugador:O=o%
+set jugador=%jugador:U=u%
+
+if /I not "%jugador%"=="piedra" if /I not "%jugador%"=="papel" if /I not "%jugador%"=="tijera" (
+    echo.
+    echo Opcion no valida. Debes escribir piedra, papel o tijera.
+    echo.
+    pause
+    goto jugar
+)
+
+REM Generar numero aleatorio 0,1,2
+set /a num=%random% %% 3
+
+if %num%==0 set pc=piedra
+if %num%==1 set pc=papel
+if %num%==2 set pc=tijera
+
+echo.
+echo El ordenador ha elegido: %pc%
+echo.
+
+if /I "%jugador%"=="%pc%" goto empate
+
+if /I "%jugador%"=="piedra" if /I "%pc%"=="tijera" goto ganas
+if /I "%jugador%"=="tijera" if /I "%pc%"=="papel" goto ganas
+if /I "%jugador%"=="papel" if /I "%pc%"=="piedra" goto ganas
+
+goto pierdes
+
+:empate
+echo Resultado: EMPATE.
+echo.
+goto preguntar_repetir
+
+:ganas
+echo Resultado: ¡HAS GANADO!
+echo.
+goto preguntar_repetir
+
+:pierdes
+echo Resultado: HAS PERDIDO.
+echo.
+goto preguntar_repetir
+
+:preguntar_repetir
+set /p otra="¿Quieres jugar otra vez? (s/n): "
+if /I "%otra%"=="s" goto jugar
+if /I "%otra%"=="n" goto inicio
+echo Opcion no valida.
+goto preguntar_repetir
+
+:salir
+cls
+echo Gracias por jugar a Piedra, Papel o Tijera.
+echo.
+pause
+exit
+</pre
+              >
+              <div class="descarga-container">
+                <a
+                  href="https://github.com/IvanL07/SistemasInformaticos_Web_ProyectoFinal/raw/refs/heads/main/zips_para_descargar/juego_piedra_papel_tijera.zip"
+                  download
+                >
+                  <button class="btn-descargar">
+                    Descargar Juego Piedra, Papel o Tijera Completo (ZIP)
+                  </button>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

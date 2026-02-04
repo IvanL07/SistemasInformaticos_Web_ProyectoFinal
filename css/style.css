@@ -1276,6 +1276,35 @@ BLOQUEO DE COPIA - TEXTO BAT
 }
 
 /* ===================================
+   BOTONES DE DESCARGA ZIPS
+   =================================== */
+
+.descarga-container {
+  text-align: right;
+  margin-top: 25px;
+}
+
+.btn-descargar {
+  background-color: #00bcd4; /* color principal de tu web */
+  color: white;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-descargar:hover {
+  background-color: #0097a7; /* tono más oscuro al pasar el ratón */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ===================================
    FOOTER
    =================================== */
 
