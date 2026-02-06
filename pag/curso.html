@@ -1617,6 +1617,157 @@ exit
                   </button>
                 </a>
               </div>
+              <hr style="margin: 25px 0" />
+
+              <h3 class="tips-title">Juego en Batch: Adivina el número</h3>
+
+              <p>
+                Ahora vamos con otro juego clásico en Batch:
+                <strong>Adivina el número</strong>. Sirve para practicar
+                <strong>variables</strong>, <strong>números aleatorios</strong>,
+                <strong>comparaciones</strong> y bucles con etiquetas
+                <code>goto</code>.
+              </p>
+
+              <h4>1. ¿Qué hace este juego?</h4>
+              <ul>
+                <li>El sistema genera un número aleatorio del 1 al 20.</li>
+                <li>Tú escribes intentos hasta acertar.</li>
+                <li>
+                  Te da pistas: <strong>más alto</strong> o
+                  <strong>más bajo</strong>.
+                </li>
+                <li>Cuenta intentos y muestra el resultado final.</li>
+              </ul>
+
+              <h4>2. Código del juego (BAT)</h4>
+
+              <pre class="code-box"><code>
+@echo off
+chcp 65001 > nul
+title Adivina el Numero
+color 1F
+mode con: cols=80 lines=25
+setlocal enabledelayedexpansion
+
+set /a target=%random% %% 20 + 1
+set /a tries=0
+
+:loop
+cls
+echo =============================
+echo     ADIVINA EL NUMERO
+echo =============================
+echo.
+set /p guess=Escribe un numero del 1 al 20: 
+
+set /a tries+=1
+
+if "%guess%"=="" goto loop
+
+if %guess% EQU %target% (
+  echo.
+  echo Correcto! Era %target%
+  echo Intentos: %tries%
+  echo.
+  pause
+  exit
+)
+
+if %guess% LSS %target% (
+  echo.
+  echo Pista: MAS ALTO
+) else (
+  echo.
+  echo Pista: MAS BAJO
+)
+
+echo Intentos: %tries%
+echo.
+pause
+goto loop</code></pre>
+
+              <h4>3. Comandos y conceptos que estás usando</h4>
+              <br />
+              <ul>
+                <li>
+                  <code>%random%</code>: variable interna de Windows que genera
+                  un número pseudoaleatorio (0–32767). Para adaptarlo al rango
+                  del juego se usa el operador módulo:
+                  <code>%random% %% 20</code> (0–19) y luego se suma 1 para
+                  obtener (1–20).
+                </li>
+
+                <li>
+                  <code>set /a</code>: asignación y cálculos matemáticos con
+                  variables numéricas. Aquí sirve para:
+                  <strong>crear el número objetivo</strong>
+                  (<code>target</code>),
+                  <strong>incrementar intentos</strong> (<code>tries+=1</code>)
+                  y evaluar expresiones sin escribir “%” dentro de la operación.
+                </li>
+
+                <li>
+                  <code>set /p</code>: lectura de entrada del usuario desde la
+                  consola. Guarda lo que escribes en una variable (por ejemplo
+                  <code>guess</code>). Es la base de la interacción del juego.
+                </li>
+
+                <li>
+                  <code>if ... EQU / LSS</code>: comparaciones numéricas para
+                  tomar decisiones. <code>EQU</code> comprueba si dos números
+                  son iguales (acertaste), y <code>LSS</code> comprueba si tu
+                  intento es menor (pista: “más alto”). Si no es menor, el
+                  <code>else</code> cubre el caso “más bajo”.
+                </li>
+
+                <li>
+                  <code>goto</code> + etiquetas (<code>:loop</code>): control
+                  del flujo y repetición del programa. Permite volver al inicio
+                  del juego para seguir intentando hasta acertar (bucle típico
+                  en Batch).
+                </li>
+
+                <li>
+                  <code>setlocal enabledelayedexpansion</code>: permite que las
+                  variables se actualicen correctamente dentro de bucles y
+                  condiciones. Gracias a ello se puede usar
+                  <code>!variable!</code> para ver el valor real en cada
+                  momento.
+                </li>
+
+                <li>
+                  <code>cls</code> y <code>echo</code>: presentación en
+                  pantalla. <code>cls</code> limpia la consola en cada intento
+                  para que se vea “ordenado”, y <code>echo</code> imprime
+                  mensajes, títulos y pistas.
+                </li>
+
+                <li>
+                  <code>pause</code> y <code>exit</code>: cierre controlado.
+                  <code>pause</code> deja el resultado visible antes de
+                  continuar, y <code>exit</code> termina el script cuando ganas.
+                </li>
+
+                <li>
+                  <strong>Validación básica</strong> (<code
+                    >if "%guess%"==""</code
+                  >): evita errores cuando el usuario no escribe nada. Si la
+                  entrada está vacía, el programa vuelve al bucle para pedir el
+                  número otra vez.
+                </li>
+              </ul>
+
+              <div class="descarga-container">
+                <a
+                  href="https://github.com/IvanL07/SistemasInformaticos_Web_ProyectoFinal/raw/refs/heads/main/zips_para_descargar/juego_adivina_el_numero.zip"
+                  download
+                >
+                  <button class="btn-descargar">
+                    Descargar Juego Adivina el Numero Completo (ZIP)
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
         </div>

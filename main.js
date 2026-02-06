@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (openQuizBtn && quizModal) {
     openQuizBtn.addEventListener("click", () => {
       quizModal.style.display = "flex";
-      resetQuizUI(); // limpia estados anteriores
+      resetQuizUI();
     });
   }
 
@@ -33,21 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
       setTheme(newTheme);
     });
   }
-
-  // Cerrar modales al clicar fuera (si quieres)
-  // window.addEventListener("click", (e) => {
-  //   const quiz = document.getElementById("quizModal");
-  //   const name = document.getElementById("nameModal");
-  //   const dip = document.getElementById("diplomaModal");
-  //   if (e.target === quiz) closeQuiz();
-  //   if (e.target === name) closeName();
-  //   if (e.target === dip) closeDiploma();
-  // });
 });
 
-// =======================
-// HELPERS QUIZ UI
-// =======================
+/* =========================================================
+   QUIZ UI HELPERS
+   ========================================================= */
 function resetQuizUI() {
   const quizResult = document.getElementById("quizResult");
   if (quizResult) {
@@ -55,37 +45,29 @@ function resetQuizUI() {
     quizResult.innerHTML = "";
   }
 
-  // Q wrappers
   document.querySelectorAll(".quiz-q").forEach((q) => {
     q.classList.remove("is-correct", "is-wrong");
-    const badge = q.querySelector(".quiz-badge");
-    if (badge) badge.remove();
-    const exp = q.querySelector(".quiz-explain");
-    if (exp) exp.remove();
+    q.querySelector(".quiz-badge")?.remove();
+    q.querySelector(".quiz-explain")?.remove();
   });
 
-  // options
   document.querySelectorAll(".quiz-opt").forEach((l) => {
     l.classList.remove("correct", "wrong", "missed");
   });
 
-  // Si todavía no se han “bonitizado” los labels, lo hacemos
   enhanceQuizMarkupOnce();
 }
 
 let __quizEnhanced = false;
 function enhanceQuizMarkupOnce() {
   if (__quizEnhanced) return;
-
   const form = document.getElementById("quizForm");
   if (!form) return;
 
-  // 1) Convierte labels en bloques bonitos
   form.querySelectorAll("label").forEach((label) => {
     label.classList.add("quiz-opt");
   });
 
-  // 2) Agrupa cada pregunta (P strong + labels hasta la siguiente P strong)
   const children = Array.from(form.children);
   let currentWrap = null;
 
@@ -118,17 +100,17 @@ function enhanceQuizMarkupOnce() {
   __quizEnhanced = true;
 }
 
-// =======================
-// QUIZ: abrir/cerrar
-// =======================
+/* =========================================================
+   QUIZ MODAL
+   ========================================================= */
 function closeQuiz() {
   const quizModal = document.getElementById("quizModal");
   if (quizModal) quizModal.style.display = "none";
 }
 
-// =======================
-// NAME MODAL: abrir/cerrar
-// =======================
+/* =========================================================
+   NAME MODAL
+   ========================================================= */
 function openNameModal() {
   const nameModal = document.getElementById("nameModal");
   const nameInput = document.getElementById("studentName");
@@ -137,8 +119,6 @@ function openNameModal() {
 
   if (nameInput) {
     setTimeout(() => nameInput.focus(), 60);
-
-    // Enter -> generar diploma
     nameInput.onkeydown = (e) => {
       if (e.key === "Enter") generateDiploma();
     };
@@ -150,16 +130,18 @@ function closeName() {
   if (nameModal) nameModal.style.display = "none";
 }
 
-// =======================
-// COMPROBACIÓN QUIZ (CON FEEDBACK + AUTO NAME MODAL)
-// =======================
+/* =========================================================
+   CHECK QUIZ (feedback + abre modal nombre si 25/25)
+   ========================================================= */
 function checkQuiz() {
   const form = document.getElementById("quizForm");
   if (!form) return;
 
   enhanceQuizMarkupOnce();
 
-  const isHistoria = window.location.pathname.toLowerCase().includes("historia");
+  const isHistoria = window.location.pathname
+    .toLowerCase()
+    .includes("historia");
 
   const correct = isHistoria
     ? {
@@ -223,10 +205,8 @@ function checkQuiz() {
   });
   document.querySelectorAll(".quiz-q").forEach((q) => {
     q.classList.remove("is-correct", "is-wrong");
-    const badge = q.querySelector(".quiz-badge");
-    if (badge) badge.remove();
-    const exp = q.querySelector(".quiz-explain");
-    if (exp) exp.remove();
+    q.querySelector(".quiz-badge")?.remove();
+    q.querySelector(".quiz-explain")?.remove();
   });
 
   let score = 0;
@@ -274,7 +254,6 @@ function checkQuiz() {
     }
   }
 
-  // Panel resumen
   const quizResult = document.getElementById("quizResult");
   const all = Object.keys(correct).length;
   const ok = score === all;
@@ -285,7 +264,7 @@ function checkQuiz() {
       <div class="qr-title">${ok ? "✅ ¡Perfecto!" : "📌 Revisión del Quiz"}</div>
       <div class="qr-sub">
         Puntuación: <strong>${score}/${all}</strong> · Respondidas: <strong>${answered}/${all}</strong>
-        ${ok ? "· Generando diploma..." : "· Te marco en verde la correcta y en rojo tu elección si fallaste."}
+        ${ok ? "· Abriendo el diploma..." : "· Te marco en verde la correcta y en rojo tu elección si fallaste."}
       </div>
       <div class="qr-actions">
         ${
@@ -298,9 +277,7 @@ function checkQuiz() {
     `;
   }
 
-  // ✅ Si está todo bien: abrir automáticamente el modal de nombre
   if (ok) {
-    // Pequeño delay para que el usuario vea el “Perfecto” un instante
     setTimeout(() => {
       closeQuiz();
       openNameModal();
@@ -320,7 +297,8 @@ function findQuestionWrapForName(qName) {
 }
 
 function addBadge(wrap, ok) {
-  const p = wrap.querySelector("p strong")?.closest("p") || wrap.querySelector("p");
+  const p =
+    wrap.querySelector("p strong")?.closest("p") || wrap.querySelector("p");
   if (!p) return;
 
   const badge = document.createElement("span");
@@ -331,7 +309,8 @@ function addBadge(wrap, ok) {
 
 function scrollToFirstWrong() {
   const firstWrong = document.querySelector(".quiz-q.is-wrong");
-  if (firstWrong) firstWrong.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (firstWrong)
+    firstWrong.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function resetQuizForm() {
@@ -340,9 +319,9 @@ function resetQuizForm() {
   resetQuizUI();
 }
 
-// =======================
-// DIPLOMA: generar + imprimir + cerrar
-// =======================
+/* =========================================================
+   DIPLOMA
+   ========================================================= */
 function generateDiploma() {
   const nameInput = document.getElementById("studentName");
   const diplomaText = document.getElementById("diplomaText");
@@ -361,10 +340,11 @@ function generateDiploma() {
     return;
   }
 
-  // Cierra modal de nombre
   nameModal.style.display = "none";
 
-  const isHistoria = window.location.pathname.toLowerCase().includes("historia");
+  const isHistoria = window.location.pathname
+    .toLowerCase()
+    .includes("historia");
   const titulo = isHistoria
     ? "HISTORIA DE LOS SISTEMAS OPERATIVOS"
     : "CURSO DE PROGRAMACIÓN BATCH (BAT)";
@@ -389,12 +369,15 @@ function generateDiploma() {
   });
   if (diplomaDate) diplomaDate.textContent = dateStr;
 
-  const id = `SI-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}${String(
-    now.getDate(),
-  ).padStart(2, "0")}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
+  const id = `SI-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(
+    2,
+    "0",
+  )}${String(now.getDate()).padStart(2, "0")}-${Math.random()
+    .toString(36)
+    .slice(2, 7)
+    .toUpperCase()}`;
   if (diplomaId) diplomaId.textContent = id;
 
-  // Abre diploma
   diplomaModal.style.display = "flex";
 }
 
@@ -418,13 +401,12 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
-/* =========================
-   CONSOLA CMD (solo juego.html)
-   ========================= */
+/* =========================================================
+   CONSOLA CMD (juego.html) — 2 JUEGOS + INSTRUCCIONES SEPARADAS
+   ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
   const out = document.getElementById("cmdOutput");
   const input = document.getElementById("cmdInput");
-
   if (!out || !input) return;
 
   function print(text = "") {
@@ -436,48 +418,151 @@ document.addEventListener("DOMContentLoaded", () => {
     out.innerHTML = "";
   }
 
+  function header() {
+    print("========================================");
+    print("           CONSOLA BAT");
+    print("========================================");
+    print("");
+  }
+
   function menu() {
-    print("========================================");
-    print("        JUEGO PIEDRA PAPEL TIJERA");
-    print("========================================");
+    header();
+    print("1) Jugar: Piedra, Papel o Tijera");
+    print("2) Instrucciones: Piedra, Papel o Tijera");
+    print("3) Jugar: Adivina el numero");
+    print("4) Instrucciones: Adivina el numero");
+    print("5) Instrucciones generales");
+    print("6) Salir");
     print("");
-    print("1) Jugar");
-    print("2) Instrucciones");
-    print("3) Salir");
-    print("");
-    print("Escribe una opción y pulsa ENTER");
+    print("Escribe una opcion y pulsa ENTER");
   }
 
-  function instrucciones() {
+  function instruccionesGenerales() {
+    header();
+    print("INSTRUCCIONES GENERALES:");
+    print("- Escribe el numero del menu (1-6) y pulsa ENTER.");
+    print("- En cualquier momento puedes escribir:");
+    print("    cls   -> limpia pantalla y vuelve al menu");
+    print("    exit  -> salir");
     print("");
-    print("INSTRUCCIONES:");
-    print("- Escribe piedra, papel o tijera cuando el juego lo pida.");
-    print("- El ordenador elegirá aleatoriamente.");
-    print("- Se mostrará si ganas, pierdes o empatas.");
-    print("");
-    print("Pulsa ENTER para volver al menú...");
+    print("Pulsa ENTER para volver al menu...");
   }
 
-  function jugar() {
+  function instruccionesPPT() {
+    header();
+    print("INSTRUCCIONES: PIEDRA, PAPEL O TIJERA");
+    print("----------------------------------------");
+    print("- Escribe: piedra, papel o tijera.");
+    print("- El ordenador elige una opcion al azar.");
+    print("- Reglas:");
+    print("    piedra gana a tijera");
+    print("    tijera gana a papel");
+    print("    papel gana a piedra");
+    print("- Si eliges lo mismo que el ordenador: empate.");
     print("");
-    print("Escribe tu elección: piedra / papel / tijera");
+    print("Pulsa ENTER para volver al menu...");
+  }
+
+  function instruccionesAdivina() {
+    header();
+    print("INSTRUCCIONES: ADIVINA EL NUMERO");
+    print("----------------------------------------");
+    print("- El ordenador piensa un numero del 1 al 20.");
+    print("- Escribe un numero y pulsa ENTER para probar.");
+    print("- Te dira si debes ir MAS ALTO o MAS BAJO.");
+    print("- Ganas cuando aciertas. Se cuentan los intentos.");
+    print("");
+    print("Pulsa ENTER para volver al menu...");
+  }
+
+  // ===== Juego 1: Piedra Papel Tijera
+  function pptStart() {
+    header();
+    print("JUEGO: PIEDRA, PAPEL O TIJERA");
+    print("----------------------------------------");
+    print("Escribe tu eleccion: piedra / papel / tijera");
     print("");
   }
 
+  function pptPlay(choice) {
+    const opciones = ["piedra", "papel", "tijera"];
+    const pc = opciones[Math.floor(Math.random() * 3)];
+    print("El ordenador elige: " + pc);
+
+    if (choice === pc) {
+      print("Resultado: EMPATE");
+    } else if (
+      (choice === "piedra" && pc === "tijera") ||
+      (choice === "tijera" && pc === "papel") ||
+      (choice === "papel" && pc === "piedra")
+    ) {
+      print("Resultado: ¡HAS GANADO!");
+    } else {
+      print("Resultado: HAS PERDIDO");
+    }
+
+    print("");
+    print("Pulsa ENTER para volver al menu...");
+  }
+
+  // ===== Juego 2: Adivina el numero
+  let guessTarget = null;
+  let guessTries = 0;
+
+  function guessStart() {
+    guessTarget = Math.floor(Math.random() * 20) + 1; // 1..20
+    guessTries = 0;
+
+    header();
+    print("JUEGO: ADIVINA EL NUMERO (1 al 20)");
+    print("----------------------------------------");
+    print("He pensado un numero del 1 al 20.");
+    print("Escribe tu intento y pulsa ENTER.");
+    print("");
+  }
+
+  function guessTry(cmd) {
+    const n = Number(cmd);
+
+    if (!Number.isFinite(n) || !Number.isInteger(n)) {
+      print("Eso no parece un numero valido. Prueba otra vez (1-20).");
+      return false;
+    }
+
+    if (n < 1 || n > 20) {
+      print("Fuera de rango. Debe ser entre 1 y 20.");
+      return false;
+    }
+
+    guessTries++;
+
+    if (n === guessTarget) {
+      print(`✅ Correcto. Era el ${guessTarget}.`);
+      print(`Intentos: ${guessTries}`);
+      print("");
+      print("Pulsa ENTER para volver al menu...");
+      return true;
+    }
+
+    if (n < guessTarget) {
+      print("🔼 Pista: MAS ALTO.");
+    } else {
+      print("🔽 Pista: MAS BAJO.");
+    }
+
+    print(`Intentos: ${guessTries}`);
+    return false;
+  }
+
+  // ===== Estado
   let estado = "menu";
 
   cls();
-  print("Bienvenido al juego BAT de Piedra, Papel o Tijera");
+  print("Bienvenido a la consola de juego BAT.");
   print("");
   menu();
 
-  document.addEventListener(
-    "click",
-    () => {
-      input.focus();
-    },
-    { once: true },
-  );
+  document.addEventListener("click", () => input.focus(), { once: true });
 
   input.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
@@ -485,58 +570,89 @@ document.addEventListener("DOMContentLoaded", () => {
     const cmd = input.value.trim().toLowerCase();
     input.value = "";
 
-    print("C:\\JuegoBAT>" + cmd);
+    if (cmd !== "") print("C:\\JuegoBAT>" + cmd);
 
+    // comandos globales
+    if (cmd === "cls") {
+      cls();
+      menu();
+      estado = "menu";
+      return;
+    }
+    if (cmd === "exit") {
+      print("");
+      print("Saliendo...");
+      print("Gracias por jugar.");
+      estado = "salir";
+      return;
+    }
+    if (estado === "salir") return;
+
+    // MENU
     if (estado === "menu") {
       if (cmd === "1") {
-        estado = "jugar";
-        jugar();
+        estado = "ppt";
+        pptStart();
       } else if (cmd === "2") {
-        estado = "instrucciones";
-        instrucciones();
-      } else if (cmd === "3" || cmd === "exit") {
+        estado = "help_ppt";
+        instruccionesPPT();
+      } else if (cmd === "3") {
+        estado = "guess";
+        guessStart();
+      } else if (cmd === "4") {
+        estado = "help_guess";
+        instruccionesAdivina();
+      } else if (cmd === "5") {
+        estado = "help_general";
+        instruccionesGenerales();
+      } else if (cmd === "6") {
         print("");
-        print("Saliendo del juego...");
+        print("Saliendo...");
         print("Gracias por jugar.");
         estado = "salir";
-      } else if (cmd === "cls") {
-        cls();
-        menu();
       } else {
-        print("Opción no válida.");
+        print("Opcion no valida.");
       }
-    } else if (estado === "instrucciones") {
-      estado = "menu";
-      menu();
-    } else if (estado === "jugar") {
-      const opciones = ["piedra", "papel", "tijera"];
+      return;
+    }
 
+    // PANTALLAS DE AYUDA (ENTER -> volver al menu)
+    if (
+      estado === "help_general" ||
+      estado === "help_ppt" ||
+      estado === "help_guess"
+    ) {
+      estado = "menu";
+      cls();
+      menu();
+      return;
+    }
+
+    // JUEGO PPT
+    if (estado === "ppt") {
+      const opciones = ["piedra", "papel", "tijera"];
       if (!opciones.includes(cmd)) {
-        print("Opción no válida. Escribe piedra, papel o tijera.");
+        print("Opcion no valida. Escribe piedra, papel o tijera.");
         return;
       }
-
-      const pc = opciones[Math.floor(Math.random() * 3)];
-      print("El ordenador elige: " + pc);
-
-      if (cmd === pc) {
-        print("Resultado: EMPATE");
-      } else if (
-        (cmd === "piedra" && pc === "tijera") ||
-        (cmd === "tijera" && pc === "papel") ||
-        (cmd === "papel" && pc === "piedra")
-      ) {
-        print("Resultado: ¡HAS GANADO!");
-      } else {
-        print("Resultado: HAS PERDIDO");
-      }
-
-      print("");
-      print("Pulsa ENTER para volver al menú...");
+      pptPlay(cmd);
       estado = "volver_menu";
-    } else if (estado === "volver_menu") {
+      return;
+    }
+
+    // JUEGO ADIVINA
+    if (estado === "guess") {
+      const finished = guessTry(cmd);
+      if (finished) estado = "volver_menu";
+      return;
+    }
+
+    // VOLVER MENU
+    if (estado === "volver_menu") {
       estado = "menu";
+      cls();
       menu();
+      return;
     }
   });
 });
