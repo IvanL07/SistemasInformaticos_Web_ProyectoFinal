@@ -1997,3 +1997,521 @@ body.dark select {
 body.dark .hero-background {
   background: linear-gradient(135deg, #020617 0%, #1e293b 100%) !important;
 }
+
+/* ===================================
+   QUIZ (MEJORA VISUAL + RESULTADOS)
+   =================================== */
+
+.quiz-modal {
+  width: min(820px, 92vw);
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(100, 116, 139, 0.25);
+  box-shadow: var(--shadow-xl);
+}
+
+.quiz-modal h3 {
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+
+.quiz-modal p {
+  color: var(--color-gray);
+  margin-bottom: 12px;
+}
+
+.quiz-result {
+  display: none;
+  margin: 14px 0 18px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(100, 116, 139, 0.25);
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: var(--shadow-sm);
+}
+
+body.dark .quiz-result {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.quiz-result .qr-title {
+  font-weight: 800;
+  color: var(--color-dark);
+  margin-bottom: 6px;
+}
+
+body.dark .quiz-result .qr-title {
+  color: #fff !important;
+}
+
+.quiz-result .qr-sub {
+  color: var(--color-gray);
+  margin-bottom: 10px;
+}
+
+body.dark .quiz-result .qr-sub {
+  color: #cbd5e1 !important;
+}
+
+.quiz-result .qr-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.quiz-q {
+  margin-top: 14px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  background: rgba(248, 250, 252, 0.55);
+}
+
+body.dark .quiz-q {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.quiz-q.is-correct {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+}
+
+.quiz-q.is-wrong {
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.10);
+}
+
+.quiz-q strong {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.quiz-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-left: 10px;
+}
+
+.quiz-badge.ok {
+  background: rgba(16, 185, 129, 0.14);
+  color: #065f46;
+  border: 1px solid rgba(16, 185, 129, 0.28);
+}
+
+.quiz-badge.bad {
+  background: rgba(239, 68, 68, 0.12);
+  color: #7f1d1d;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+body.dark .quiz-badge.ok {
+  color: #bbf7d0;
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+body.dark .quiz-badge.bad {
+  color: #fecaca;
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.quiz-explain {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: var(--color-gray);
+}
+
+body.dark .quiz-explain {
+  color: #cbd5e1 !important;
+}
+
+.quiz-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(100, 116, 139, 0.18);
+  background: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.quiz-opt:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+body.dark .quiz-opt {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.quiz-opt input {
+  transform: scale(1.05);
+}
+
+.quiz-opt.correct {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.10);
+}
+
+.quiz-opt.wrong {
+  border-color: rgba(239, 68, 68, 0.32);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.08);
+}
+
+.quiz-opt.missed {
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.10);
+}
+
+.quiz-footer-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.btn-secondary {
+  background: transparent !important;
+  color: var(--color-primary) !important;
+  border: 2px solid var(--color-primary) !important;
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary) !important;
+  color: white !important;
+}
+
+/* ===================================
+   DIPLOMA (ELEGANTE + IMPRIMIR)
+   =================================== */
+
+.diploma-modal {
+  width: min(920px, 94vw);
+  padding: 18px;
+  border-radius: 18px;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+}
+
+.close-x {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(100, 116, 139, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+body.dark .close-x {
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.diploma-paper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 26px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(100, 116, 139, 0.22);
+}
+
+body.dark .diploma-paper {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.diploma-watermark {
+  position: absolute;
+  inset: auto auto 18px -40px;
+  transform: rotate(-12deg);
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  opacity: 0.08;
+  color: var(--color-primary);
+  pointer-events: none;
+  user-select: none;
+}
+
+.diploma-top {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.diploma-badge {
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.14);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  color: var(--color-primary);
+}
+
+.diploma-title {
+  margin-top: 10px;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--color-dark);
+}
+
+body.dark .diploma-title {
+  color: #fff !important;
+}
+
+.diploma-subtitle {
+  color: var(--color-gray);
+  margin-top: 6px;
+}
+
+body.dark .diploma-subtitle {
+  color: #cbd5e1 !important;
+}
+
+.diploma-body {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.diploma-label {
+  color: var(--color-gray);
+  margin-bottom: 6px;
+}
+
+.diploma-name {
+  font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+  font-weight: 900;
+  color: var(--color-primary);
+  margin: 6px 0 10px;
+}
+
+.diploma-text {
+  color: var(--color-dark);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+body.dark .diploma-text {
+  color: #e5e7eb !important;
+}
+
+.diploma-meta {
+  margin: 18px auto 0;
+  max-width: 520px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.diploma-line {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(100, 116, 139, 0.18);
+  background: rgba(255, 255, 255, 0.7);
+  text-align: left;
+}
+
+body.dark .diploma-line {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.diploma-line-label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-gray);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.diploma-line-value {
+  font-weight: 800;
+  color: var(--color-dark);
+}
+
+body.dark .diploma-line-value {
+  color: #fff !important;
+}
+
+.diploma-signs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.diploma-sign-line {
+  height: 1px;
+  background: rgba(100, 116, 139, 0.45);
+  margin-bottom: 8px;
+}
+
+body.dark .diploma-sign-line {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.diploma-sign-label {
+  font-size: 0.95rem;
+  color: var(--color-gray);
+  font-weight: 700;
+}
+
+.diploma-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.btn-print {
+  width: auto;
+}
+
+/* Imprimir solo el diploma */
+@media print {
+  body.print-diploma * {
+    visibility: hidden !important;
+  }
+
+  body.print-diploma #diplomaPrintArea,
+  body.print-diploma #diplomaPrintArea * {
+    visibility: visible !important;
+  }
+
+  body.print-diploma #diplomaPrintArea {
+    position: fixed;
+    inset: 0;
+    margin: 0;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 24px !important;
+  }
+}
+
+/* =========================
+   NAME MODAL (Pedir nombre)
+   ========================= */
+.name-modal {
+  width: min(520px, 92vw);
+  border-radius: 18px;
+  position: relative;
+  padding: 20px;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(100, 116, 139, 0.25);
+}
+
+.name-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(30, 64, 175, 0.10));
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  margin-bottom: 14px;
+}
+
+.name-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(100, 116, 139, 0.2);
+}
+
+body.dark .name-icon {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.name-title {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--color-dark);
+}
+
+body.dark .name-title {
+  color: #fff !important;
+}
+
+.name-sub {
+  margin: 4px 0 0;
+  color: var(--color-gray);
+}
+
+body.dark .name-sub {
+  color: #cbd5e1 !important;
+}
+
+.name-label {
+  display: block;
+  font-weight: 800;
+  color: var(--color-dark);
+  margin: 10px 0 8px;
+}
+
+body.dark .name-label {
+  color: #e5e7eb !important;
+}
+
+.name-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(100, 116, 139, 0.25);
+  outline: none;
+  font-size: 1rem;
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.name-input:focus {
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.14);
+}
+
+.name-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.name-hint {
+  margin-top: 12px;
+  color: var(--color-gray);
+  font-size: 0.92rem;
+}
+
+body.dark .name-hint {
+  color: #cbd5e1 !important;
+}

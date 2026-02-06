@@ -1649,7 +1649,7 @@ exit
 
     <!-- Modal del QUIZ -->
     <div id="quizModal" class="modal-bg">
-      <div class="modal-box">
+      <div class="modal-box diploma-modal">
         <span class="close-btn" onclick="closeQuiz()">×</span>
         <h3>QUIZ del Curso BAT</h3>
         <p>
@@ -1816,34 +1816,120 @@ exit
 
     <!-- Modal del DIPLOMA -->
     <div id="diplomaModal" class="modal-bg">
-      <div class="modal-box">
-        <span class="close-btn" onclick="closeDiploma()">×</span>
-        <h2>Diploma del Curso BAT</h2>
-        <p id="diplomaText" style="font-size: 1.2rem; margin-top: 15px"></p>
+      <div class="modal-box diploma-modal">
+        <button
+          class="close-x"
+          type="button"
+          onclick="closeDiploma()"
+          aria-label="Cerrar"
+        >
+          ×
+        </button>
+
+        <div id="diplomaPrintArea" class="diploma-paper">
+          <div class="diploma-watermark">Sistemas Informáticos</div>
+
+          <div class="diploma-top">
+            <div class="diploma-badge">CERTIFICADO</div>
+            <h2 class="diploma-title">Diploma de Finalización</h2>
+            <p class="diploma-subtitle">
+              Plataforma Educativa · Sistemas Informáticos
+            </p>
+          </div>
+
+          <div class="diploma-body">
+            <p class="diploma-label">Se otorga a</p>
+            <p id="diplomaName" class="diploma-name">—</p>
+
+            <div class="diploma-text" id="diplomaText"></div>
+
+            <div class="diploma-meta">
+              <div class="diploma-line">
+                <span class="diploma-line-label">Fecha</span>
+                <span id="diplomaDate" class="diploma-line-value">—</span>
+              </div>
+              <div class="diploma-line">
+                <span class="diploma-line-label">ID</span>
+                <span id="diplomaId" class="diploma-line-value">—</span>
+              </div>
+            </div>
+
+            <div class="diploma-signs">
+              <div class="diploma-sign">
+                <div class="diploma-sign-line"></div>
+                <div class="diploma-sign-label">Profesor / Tutor</div>
+              </div>
+              <div class="diploma-sign">
+                <div class="diploma-sign-line"></div>
+                <div class="diploma-sign-label">Dirección Académica</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="diploma-actions">
+          <button
+            class="btn-quiz btn-print"
+            type="button"
+            onclick="printDiploma()"
+          >
+            🖨️ Imprimir diploma
+          </button>
+          <button
+            class="btn-quiz btn-secondary"
+            type="button"
+            onclick="closeDiploma()"
+          >
+            Cerrar
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- Modal pedir nombre -->
     <div id="nameModal" class="modal-bg">
-      <div class="modal-box">
-        <span class="close-btn" onclick="closeName()">×</span>
-        <h3>¡Perfecto!</h3>
-        <p>Introduce tu nombre para generar tu diploma.</p>
+      <div class="modal-box name-modal">
+        <button
+          class="close-x"
+          type="button"
+          onclick="closeName()"
+          aria-label="Cerrar"
+        >
+          ×
+        </button>
+
+        <div class="name-head">
+          <div class="name-icon">🏅</div>
+          <div>
+            <h3 class="name-title">¡Perfecto!</h3>
+            <p class="name-sub">Introduce tu nombre para generar tu diploma.</p>
+          </div>
+        </div>
+
+        <label class="name-label" for="studentName">Nombre y apellidos</label>
         <input
           type="text"
           id="studentName"
-          placeholder="Tu nombre"
-          style="
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-          "
+          class="name-input"
+          autocomplete="name"
         />
-        <br /><br />
-        <button class="btn-quiz" onclick="generateDiploma()">
-          Generar diploma
-        </button>
+
+        <div class="name-actions">
+          <button
+            class="btn-quiz btn-secondary"
+            type="button"
+            onclick="closeName()"
+          >
+            Cancelar
+          </button>
+          <button class="btn-quiz" type="button" onclick="generateDiploma()">
+            Generar diploma
+          </button>
+        </div>
+
+        <p class="name-hint">
+          Tip: también puedes pulsar <strong>Enter</strong>.
+        </p>
       </div>
     </div>
 

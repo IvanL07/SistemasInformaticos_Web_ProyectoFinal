@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (openQuizBtn && quizModal) {
     openQuizBtn.addEventListener("click", () => {
       quizModal.style.display = "flex";
+      resetQuizUI(); // limpia estados anteriores
     });
   }
 
@@ -22,10 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (toggle) toggle.textContent = theme === "dark" ? "☀️" : "🌙";
   }
 
-  // Aplicar al cargar
   setTheme(localStorage.getItem("theme") || "light");
 
-  // Click
   if (toggle) {
     toggle.addEventListener("click", () => {
       const newTheme = document.body.classList.contains("dark")
@@ -34,25 +33,133 @@ document.addEventListener("DOMContentLoaded", () => {
       setTheme(newTheme);
     });
   }
+
+  // Cerrar modales al clicar fuera (si quieres)
+  // window.addEventListener("click", (e) => {
+  //   const quiz = document.getElementById("quizModal");
+  //   const name = document.getElementById("nameModal");
+  //   const dip = document.getElementById("diplomaModal");
+  //   if (e.target === quiz) closeQuiz();
+  //   if (e.target === name) closeName();
+  //   if (e.target === dip) closeDiploma();
+  // });
 });
 
-// Cerrar quiz
+// =======================
+// HELPERS QUIZ UI
+// =======================
+function resetQuizUI() {
+  const quizResult = document.getElementById("quizResult");
+  if (quizResult) {
+    quizResult.style.display = "none";
+    quizResult.innerHTML = "";
+  }
+
+  // Q wrappers
+  document.querySelectorAll(".quiz-q").forEach((q) => {
+    q.classList.remove("is-correct", "is-wrong");
+    const badge = q.querySelector(".quiz-badge");
+    if (badge) badge.remove();
+    const exp = q.querySelector(".quiz-explain");
+    if (exp) exp.remove();
+  });
+
+  // options
+  document.querySelectorAll(".quiz-opt").forEach((l) => {
+    l.classList.remove("correct", "wrong", "missed");
+  });
+
+  // Si todavía no se han “bonitizado” los labels, lo hacemos
+  enhanceQuizMarkupOnce();
+}
+
+let __quizEnhanced = false;
+function enhanceQuizMarkupOnce() {
+  if (__quizEnhanced) return;
+
+  const form = document.getElementById("quizForm");
+  if (!form) return;
+
+  // 1) Convierte labels en bloques bonitos
+  form.querySelectorAll("label").forEach((label) => {
+    label.classList.add("quiz-opt");
+  });
+
+  // 2) Agrupa cada pregunta (P strong + labels hasta la siguiente P strong)
+  const children = Array.from(form.children);
+  let currentWrap = null;
+
+  function isQuestionP(el) {
+    return (
+      el &&
+      el.tagName === "P" &&
+      el.querySelector("strong") &&
+      /(\d+\.)/.test(el.textContent.trim())
+    );
+  }
+
+  children.forEach((node) => {
+    if (isQuestionP(node)) {
+      currentWrap = document.createElement("div");
+      currentWrap.className = "quiz-q";
+      form.insertBefore(currentWrap, node);
+      currentWrap.appendChild(node);
+      return;
+    }
+
+    // no mover el botón final
+    if (node.tagName === "BUTTON") return;
+
+    if (currentWrap && node.nodeType === 1) {
+      currentWrap.appendChild(node);
+    }
+  });
+
+  __quizEnhanced = true;
+}
+
+// =======================
+// QUIZ: abrir/cerrar
+// =======================
 function closeQuiz() {
   const quizModal = document.getElementById("quizModal");
   if (quizModal) quizModal.style.display = "none";
 }
 
-// Cerrar modal nombre
+// =======================
+// NAME MODAL: abrir/cerrar
+// =======================
+function openNameModal() {
+  const nameModal = document.getElementById("nameModal");
+  const nameInput = document.getElementById("studentName");
+
+  if (nameModal) nameModal.style.display = "flex";
+
+  if (nameInput) {
+    setTimeout(() => nameInput.focus(), 60);
+
+    // Enter -> generar diploma
+    nameInput.onkeydown = (e) => {
+      if (e.key === "Enter") generateDiploma();
+    };
+  }
+}
+
 function closeName() {
   const nameModal = document.getElementById("nameModal");
   if (nameModal) nameModal.style.display = "none";
 }
 
-// Comprobación del quiz (detecta la página)
+// =======================
+// COMPROBACIÓN QUIZ (CON FEEDBACK + AUTO NAME MODAL)
+// =======================
 function checkQuiz() {
-  const isHistoria = window.location.pathname
-    .toLowerCase()
-    .includes("historia");
+  const form = document.getElementById("quizForm");
+  if (!form) return;
+
+  enhanceQuizMarkupOnce();
+
+  const isHistoria = window.location.pathname.toLowerCase().includes("historia");
 
   const correct = isHistoria
     ? {
@@ -110,56 +217,205 @@ function checkQuiz() {
         q25: "exit",
       };
 
-  let score = 0;
+  // Limpia estilos anteriores
+  document.querySelectorAll(".quiz-opt").forEach((l) => {
+    l.classList.remove("correct", "wrong", "missed");
+  });
+  document.querySelectorAll(".quiz-q").forEach((q) => {
+    q.classList.remove("is-correct", "is-wrong");
+    const badge = q.querySelector(".quiz-badge");
+    if (badge) badge.remove();
+    const exp = q.querySelector(".quiz-explain");
+    if (exp) exp.remove();
+  });
 
-  for (let q in correct) {
-    const selected = document.querySelector(`input[name="${q}"]:checked`);
-    if (selected && selected.value === correct[q]) score++;
+  let score = 0;
+  let answered = 0;
+
+  for (const qName in correct) {
+    const selected = document.querySelector(`input[name="${qName}"]:checked`);
+    const rightValue = correct[qName];
+
+    if (selected) answered++;
+
+    const rightInput = document.querySelector(
+      `input[name="${qName}"][value="${CSS.escape(rightValue)}"]`,
+    );
+
+    const selectedLabel = selected ? selected.closest("label") : null;
+    const rightLabel = rightInput ? rightInput.closest("label") : null;
+
+    const wrap = findQuestionWrapForName(qName);
+
+    if (selected && selected.value === rightValue) {
+      score++;
+      if (wrap) {
+        wrap.classList.add("is-correct");
+        addBadge(wrap, true);
+      }
+      if (rightLabel) rightLabel.classList.add("correct");
+    } else {
+      if (wrap) {
+        wrap.classList.add("is-wrong");
+        addBadge(wrap, false);
+      }
+      if (rightLabel) rightLabel.classList.add("correct");
+      if (selectedLabel) selectedLabel.classList.add("wrong");
+      if (!selectedLabel && rightLabel) rightLabel.classList.add("missed");
+
+      if (wrap) {
+        const explain = document.createElement("div");
+        explain.className = "quiz-explain";
+        explain.innerHTML = selected
+          ? `Respuesta correcta marcada en <strong>verde</strong>.`
+          : `No respondiste esta pregunta. La correcta está marcada en <strong>verde</strong>.`;
+        wrap.appendChild(explain);
+      }
+    }
   }
 
-  if (score === 25) {
-    closeQuiz();
-    const nameModal = document.getElementById("nameModal");
-    if (nameModal) nameModal.style.display = "flex";
-  } else {
-    alert(
-      "Algunas respuestas son incorrectas. Revisa el contenido e inténtalo de nuevo.",
-    );
+  // Panel resumen
+  const quizResult = document.getElementById("quizResult");
+  const all = Object.keys(correct).length;
+  const ok = score === all;
+
+  if (quizResult) {
+    quizResult.style.display = "block";
+    quizResult.innerHTML = `
+      <div class="qr-title">${ok ? "✅ ¡Perfecto!" : "📌 Revisión del Quiz"}</div>
+      <div class="qr-sub">
+        Puntuación: <strong>${score}/${all}</strong> · Respondidas: <strong>${answered}/${all}</strong>
+        ${ok ? "· Generando diploma..." : "· Te marco en verde la correcta y en rojo tu elección si fallaste."}
+      </div>
+      <div class="qr-actions">
+        ${
+          ok
+            ? `<button type="button" class="btn-quiz" onclick="continueToName()">Continuar</button>`
+            : `<button type="button" class="btn-quiz btn-secondary" onclick="scrollToFirstWrong()">Ir a la primera incorrecta</button>
+               <button type="button" class="btn-quiz" onclick="resetQuizForm()">Reintentar</button>`
+        }
+      </div>
+    `;
+  }
+
+  // ✅ Si está todo bien: abrir automáticamente el modal de nombre
+  if (ok) {
+    // Pequeño delay para que el usuario vea el “Perfecto” un instante
+    setTimeout(() => {
+      closeQuiz();
+      openNameModal();
+    }, 250);
   }
 }
 
-// Generar diploma (detecta la página)
+function continueToName() {
+  closeQuiz();
+  openNameModal();
+}
+
+function findQuestionWrapForName(qName) {
+  const any = document.querySelector(`input[name="${qName}"]`);
+  if (!any) return null;
+  return any.closest(".quiz-q") || null;
+}
+
+function addBadge(wrap, ok) {
+  const p = wrap.querySelector("p strong")?.closest("p") || wrap.querySelector("p");
+  if (!p) return;
+
+  const badge = document.createElement("span");
+  badge.className = `quiz-badge ${ok ? "ok" : "bad"}`;
+  badge.textContent = ok ? "✔ Correcta" : "✖ Incorrecta";
+  p.appendChild(badge);
+}
+
+function scrollToFirstWrong() {
+  const firstWrong = document.querySelector(".quiz-q.is-wrong");
+  if (firstWrong) firstWrong.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function resetQuizForm() {
+  const form = document.getElementById("quizForm");
+  if (form) form.reset();
+  resetQuizUI();
+}
+
+// =======================
+// DIPLOMA: generar + imprimir + cerrar
+// =======================
 function generateDiploma() {
   const nameInput = document.getElementById("studentName");
   const diplomaText = document.getElementById("diplomaText");
   const diplomaModal = document.getElementById("diplomaModal");
   const nameModal = document.getElementById("nameModal");
+  const diplomaName = document.getElementById("diplomaName");
+  const diplomaDate = document.getElementById("diplomaDate");
+  const diplomaId = document.getElementById("diplomaId");
 
   if (!nameInput || !diplomaText || !diplomaModal || !nameModal) return;
 
   const name = nameInput.value.trim();
   if (name === "") {
     alert("Por favor, introduce tu nombre.");
+    nameInput.focus();
     return;
   }
 
-  // Cerrar modal de nombre
+  // Cierra modal de nombre
   nameModal.style.display = "none";
 
-  const isHistoria = window.location.pathname
-    .toLowerCase()
-    .includes("historia");
-  const mensaje = isHistoria
-    ? "has completado con éxito todo el estudio de <strong>HISTORIA DE LOS SISTEMAS OPERATIVOS</strong>. ¡Enhorabuena!"
-    : "has completado con éxito todo el estudio del <strong>CURSO BAT</strong>. ¡Enhorabuena!";
+  const isHistoria = window.location.pathname.toLowerCase().includes("historia");
+  const titulo = isHistoria
+    ? "HISTORIA DE LOS SISTEMAS OPERATIVOS"
+    : "CURSO DE PROGRAMACIÓN BATCH (BAT)";
 
-  diplomaText.innerHTML = `<strong>${name}</strong>, ${mensaje}`;
+  diplomaText.innerHTML = `
+    <p>
+      Se certifica que <strong>${escapeHtml(name)}</strong> ha completado con éxito
+      el contenido de <strong>${titulo}</strong> demostrando comprensión de los conceptos clave.
+    </p>
+    <p style="margin-top:10px;">
+      ¡Enhorabuena por tu esfuerzo y constancia! 🏆
+    </p>
+  `;
+
+  if (diplomaName) diplomaName.textContent = name;
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString("es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  });
+  if (diplomaDate) diplomaDate.textContent = dateStr;
+
+  const id = `SI-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}${String(
+    now.getDate(),
+  ).padStart(2, "0")}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
+  if (diplomaId) diplomaId.textContent = id;
+
+  // Abre diploma
   diplomaModal.style.display = "flex";
+}
+
+function printDiploma() {
+  document.body.classList.add("print-diploma");
+  window.print();
+  setTimeout(() => document.body.classList.remove("print-diploma"), 300);
 }
 
 function closeDiploma() {
   const diplomaModal = document.getElementById("diplomaModal");
   if (diplomaModal) diplomaModal.style.display = "none";
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 /* =========================
@@ -169,7 +425,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const out = document.getElementById("cmdOutput");
   const input = document.getElementById("cmdInput");
 
-  // Si no estamos en juego.html, no hacemos nada
   if (!out || !input) return;
 
   function print(text = "") {
@@ -209,16 +464,13 @@ document.addEventListener("DOMContentLoaded", () => {
     print("");
   }
 
-  // Estado
   let estado = "menu";
 
-  // Inicio
   cls();
   print("Bienvenido al juego BAT de Piedra, Papel o Tijera");
   print("");
   menu();
 
-  // Mejor: no forzar scroll al cargar (haz foco al primer click)
   document.addEventListener(
     "click",
     () => {
