@@ -2771,38 +2771,18 @@ body.dark .header{
 /* ============================
    HERO FONDO ANIMADO SUAVE
    ============================ */
-
-.hero-animated {
-  background-size: 200% 200%;
-  animation: heroGradient 25s ease infinite;
-}
-
-/* =========================================
-   HERO ANIMADO (PARA TODAS LAS PÁGINAS)
-   Copiar/pegar al final de style.css
-   ========================================= */
-
-.hero-animated {
+/* ============================
+   HERO ANIMADO GLOBAL
+   ============================ */
+.hero-animated{
   background-size: 220% 220%;
-  animation: heroGradient 14s ease infinite;
+  animation: heroGradient 8s ease-in-out infinite;
 }
 
-@keyframes heroGradient {
+@keyframes heroGradient{
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-/* Respeta accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-  .hero-animated { animation: none !important; }
-}
-
-
-
-/* Respeta accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-  .hero-animated { animation : 20s none !important; }
 }
 
 /* ---- Fondos animados específicos por página ---- */
@@ -2847,6 +2827,18 @@ body.dark .header{
   animation: heroGradient 20s ease infinite;
 }
 
+
+/* HERO ANIMADO – CHATBOT (Neón moderno) */
+/* ChatBot IA */
+.page-hero-chatbot.hero-animated{
+  background-image: linear-gradient(135deg,
+    #06b6d4 0%,
+    #6366f1 50%,
+    #ec4899 100%
+  );
+}
+
+
 /* Gradiente específico del HOME */
 .hero.hero-animated{
   background-image: linear-gradient(135deg,
@@ -2858,12 +2850,11 @@ body.dark .header{
 
 
 
-/* ===================================
-   CHATBOT IA
-   =================================== */
-.page-hero-chatbot{
-  background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 55%, #22c55e 100%);
-}
+
+
+
+
+
 
 .chatbot-section{
   padding: var(--spacing-2xl) 0;
