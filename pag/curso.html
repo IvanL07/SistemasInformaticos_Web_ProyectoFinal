@@ -1781,7 +1781,127 @@ goto loop</code></pre>
             Haz un QUIZ para evaluar tus conocimientos
           </button>
         </div>
+
+        <section class="course-conclusion">
+        <div class="container">
+          <div class="conclusion-box">
+            <h2 class="conclusion-title">NETSTAT EN BATCH</h2>
+
+            <div class="curso-bat no-copy">
+              <h3 class="tips-title">
+                Netstat: Monitorización de conexiones y puertos
+              </h3>
+
+              <p>
+                Esta píldora consiste en un archivo
+                <strong>.bat</strong> diseñado para
+                <strong>monitorizar las conexiones de red y los puertos</strong>
+                de nuestro ordenador mediante el comando
+                <code>netstat</code>. Nos permite ver conexiones activas,
+                puertos en escucha (<em>LISTENING</em>) y el
+                <strong>PID</strong> del proceso asociado para identificar
+                qué programa está usando cada conexión.
+              </p>
+
+              <h4>Código (TXT)</h4>
+
+              <pre class="no-copy">
+@echo off
+setlocal EnableExtensions
+title Pildora Netstat - Inspeccion de Conexiones (Windows)
+
+:menu
+cls
+echo ==========================================================
+echo  INSPECCION DE CONEXIONES CON NETSTAT (Windows)
+echo ==========================================================
+echo.
+echo Que vas a aprender aqui :
+echo  - LISTENING  : un servicio esta "escuchando" en un puerto.
+echo  - ESTABLISHED: conexion activa (normal en navegadores, apps, etc.).
+echo  - TIME_WAIT  : conexion ya cerrada, Windows la mantiene un rato.
+echo  - CLOSE_WAIT : remoto cerro, tu app aun no cerro del todo.
+echo.
+echo Menu:
+echo  [1] Foto general (netstat -a)
+echo  [2] Conexiones con PID (netstat -ano)
+echo  [3] Filtrar por puerto (ej: 443) y ver PID
+echo  [4] Ver que programa es un PID (tasklist)
+echo  [5] Ver UDP (netstat UDP con PID)
+echo  [6] Ver solo puertos en LISTENING (servidores locales)
+echo  [0] Salir
+echo.
+
+set "OPCION="
+set /p "OPCION=Que quieres hacer: "
+
+if "%OPCION%"=="0" goto salir
+if "%OPCION%"=="1" goto op_a
+if "%OPCION%"=="2" goto op_ano
+if "%OPCION%"=="3" goto op_puerto
+if "%OPCION%"=="4" goto op_pid
+if "%OPCION%"=="5" goto op_udp
+if "%OPCION%"=="6" goto op_listening
+
+pause
+goto menu
+
+:op_a
+cls
+netstat -a
+pause
+goto menu
+
+:op_ano
+cls
+netstat -ano
+pause
+goto menu
+
+:op_puerto
+cls
+set /p PORT=Introduce el puerto (ej 443): 
+netstat -ano | findstr ":%PORT%"
+pause
+goto menu
+
+:op_pid
+cls
+set /p PID=Introduce el PID: 
+tasklist /fi "PID eq %PID%"
+pause
+goto menu
+
+:op_udp
+cls
+netstat -ano -p udp
+pause
+goto menu
+
+:op_listening
+cls
+netstat -ano | findstr LISTENING
+pause
+goto menu
+
+:salir
+endlocal
+exit
+              </pre>
+
+              <div class="descarga-container">
+                <a
+                  href="https://github.com/IvanL07/SistemasInformaticos_Web_ProyectoFinal/raw/refs/heads/main/zips_para_descargar/netstat.zip"
+                  download
+                >
+                  <button class="btn-descargar">
+                    Descargar Netstat Completo (ZIP con BAT + TXT)
+                  </button>
+                </a>
+              </div>
+            </div>
       </section>
+
     </main>
 
     <!-- Footer -->
