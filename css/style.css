@@ -2713,3 +2713,442 @@ body.dark .video-badge {
 .video-desc {
   min-height: 4.5em;
 }
+
+/* pruebas */
+
+.panel {
+  background: rgba(255,255,255,.75);
+  border-radius: 20px;
+  border: 1px solid rgba(148,163,184,.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+}
+
+
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,.72);
+  border-bottom: 1px solid rgba(15,23,42,.08);
+}
+
+body.dark .header{
+  background: rgba(2,6,23,.65);
+  border-bottom: 1px solid rgba(148,163,184,.12);
+}
+
+/* botones */
+
+.card-button, .btn-quiz, .cta-button-primary, .video-link{
+  position: relative;
+  overflow: hidden;
+}
+
+.card-button::after, .btn-quiz::after, .cta-button-primary::after, .video-link::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-60%;
+  width:40%;
+  height:180%;
+  transform: rotate(18deg);
+  background: rgba(255,255,255,.25);
+  filter: blur(1px);
+  transition: left .6s ease;
+}
+
+.card-button:hover::after,
+.btn-quiz:hover::after,
+.cta-button-primary:hover::after,
+.video-link:hover::after{
+  left:130%;
+}
+
+
+
+/* cards 3d */
+/* ============================
+   HERO FONDO ANIMADO SUAVE
+   ============================ */
+
+.hero-animated {
+  background-size: 200% 200%;
+  animation: heroGradient 25s ease infinite;
+}
+
+/* =========================================
+   HERO ANIMADO (PARA TODAS LAS PÁGINAS)
+   Copiar/pegar al final de style.css
+   ========================================= */
+
+.hero-animated {
+  background-size: 220% 220%;
+  animation: heroGradient 14s ease infinite;
+}
+
+@keyframes heroGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Respeta accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animated { animation: none !important; }
+}
+
+
+
+/* Respeta accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animated { animation : 20s none !important; }
+}
+
+/* ---- Fondos animados específicos por página ---- */
+/* Historia */
+.page-hero-historia.hero-animated{
+  background-image: linear-gradient(135deg,
+    rgba(99,102,241,1) 0%,
+    rgba(15,23,42,1) 45%,
+    rgba(34,197,94,1) 100%
+  );
+}
+
+/* Curso */
+.page-hero-curso.hero-animated{
+  background-image: linear-gradient(135deg,
+    rgba(14,165,233,1) 0%,
+    rgba(99,102,241,1) 55%,
+    rgba(34,197,94,1) 100%
+  );
+}
+
+/* Juego */
+.page-hero-juego.hero-animated{
+  background-image: linear-gradient(135deg,
+    rgba(34,197,94,1) 0%,
+    rgba(15,23,42,1) 55%,
+    rgba(99,102,241,1) 100%
+  );
+}
+
+/* Vídeos */
+.page-hero-videos.hero-animated{
+  background-image: linear-gradient(135deg,
+    rgba(139,92,246,1) 0%,
+    rgba(15,23,42,1) 55%,
+    rgba(14,165,233,1) 100%
+  );
+}
+
+.hero.hero-animated{
+  background-size: 220% 220%;
+  animation: heroGradient 20s ease infinite;
+}
+
+/* Gradiente específico del HOME */
+.hero.hero-animated{
+  background-image: linear-gradient(135deg,
+    rgba(99,102,241,1) 0%,   /* azul principal */
+    rgba(15,23,42,1) 45%,   /* oscuro */
+    rgba(34,197,94,1) 100%  /* verde */
+  );
+}
+
+
+
+/* ===================================
+   CHATBOT IA
+   =================================== */
+.page-hero-chatbot{
+  background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 55%, #22c55e 100%);
+}
+
+.chatbot-section{
+  padding: var(--spacing-2xl) 0;
+  background: var(--color-bg-light);
+}
+
+.chatbot-shell{
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 18px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(100,116,139,.22);
+  box-shadow: var(--shadow-xl);
+  background: rgba(255,255,255,.75);
+}
+
+body.dark .chatbot-shell{
+  background: rgba(2,6,23,.55);
+  border-color: rgba(148,163,184,.16);
+}
+
+.chatbot-side{
+  padding: 18px;
+  background: rgba(255,255,255,.55);
+  border-right: 1px solid rgba(100,116,139,.18);
+}
+
+body.dark .chatbot-side{
+  background: rgba(2,6,23,.35);
+  border-right-color: rgba(148,163,184,.14);
+}
+
+.chatbot-side-head{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 14px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(255,255,255,.9), rgba(248,250,252,.7));
+  border: 1px solid rgba(100,116,139,.18);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 14px;
+}
+
+body.dark .chatbot-side-head{
+  background: rgba(255,255,255,.05);
+  border-color: rgba(148,163,184,.16);
+}
+
+.bot-dot{
+  width: 14px; height: 14px;
+  border-radius: 999px;
+  background: var(--gradient-hero);
+  box-shadow: 0 0 0 6px rgba(59,130,246,.15);
+}
+
+.bot-title{ font-weight: 800; color: var(--color-primary); }
+.bot-sub{ font-size: .92rem; color: var(--color-gray); }
+body.dark .bot-sub{ color: #cbd5e1; }
+
+.chatbot-suggestions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 6px 2px 14px;
+}
+
+.chip{
+  border: 1px solid rgba(100,116,139,.25);
+  background: rgba(255,255,255,.75);
+  padding: .45rem .75rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.chip:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  opacity: .95;
+}
+
+body.dark .chip{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(148,163,184,.18);
+  color: #e5e7eb;
+}
+
+.chatbot-tip{
+  margin-top: 8px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(100,116,139,.18);
+  color: var(--color-gray);
+  line-height: 1.6;
+}
+body.dark .chatbot-tip{
+  background: rgba(255,255,255,.05);
+  border-color: rgba(148,163,184,.14);
+  color: #cbd5e1;
+}
+
+.chatbot-main{
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 520px;
+}
+
+.chatbot-log{
+  padding: 18px;
+  overflow: auto;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(59,130,246,.10), transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(34,197,94,.10), transparent 45%),
+    radial-gradient(circle at 30% 90%, rgba(139,92,246,.10), transparent 45%);
+}
+
+.chatbot-input{
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid rgba(100,116,139,.18);
+  background: rgba(255,255,255,.6);
+}
+
+body.dark .chatbot-input{
+  background: rgba(2,6,23,.35);
+  border-top-color: rgba(148,163,184,.14);
+}
+
+#chatInput{
+  flex: 1;
+  padding: .85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(100,116,139,.25);
+  outline: none;
+  background: rgba(255,255,255,.9);
+}
+
+body.dark #chatInput{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(148,163,184,.18);
+  color: #e5e7eb;
+}
+
+.chat-msg{
+  display: flex;
+  gap: 10px;
+  margin: 12px 0;
+  align-items: flex-end;
+}
+
+.chat-avatar{
+  width: 34px; height: 34px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  border: 1px solid rgba(100,116,139,.25);
+  background: rgba(255,255,255,.7);
+}
+
+body.dark .chat-avatar{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(148,163,184,.18);
+  color: #e5e7eb;
+}
+
+.chat-bubble{
+  max-width: 78%;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(100,116,139,.22);
+  background: rgba(255,255,255,.85);
+  box-shadow: var(--shadow-sm);
+  line-height: 1.65;
+}
+
+body.dark .chat-bubble{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(148,163,184,.16);
+  color: #e5e7eb;
+}
+
+.chat-msg.user{
+  flex-direction: row-reverse;
+}
+
+.chat-msg.user .chat-bubble{
+  background: linear-gradient(145deg, rgba(59,130,246,.16), rgba(34,197,94,.10));
+}
+
+.typing{
+  font-family: var(--font-mono);
+  opacity: .9;
+}
+
+@media (max-width: 980px){
+  .chatbot-shell{ grid-template-columns: 1fr; }
+  .chatbot-side{ border-right: none; border-bottom: 1px solid rgba(100,116,139,.18); }
+}
+
+/* header*/
+
+/* =========================================
+   HERO TEXT FLOAT-UP (ON LOAD)
+   ========================================= */
+
+.hero-animate-up > * {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroFloatUp .9s ease-out forwards;
+}
+
+/* Pequeño delay escalonado */
+.hero-animate-up > *:nth-child(1) { animation-delay: .15s; }
+.hero-animate-up > *:nth-child(2) { animation-delay: .30s; }
+.hero-animate-up > *:nth-child(3) { animation-delay: .45s; }
+.hero-animate-up > *:nth-child(4) { animation-delay: .60s; }
+
+@keyframes heroFloatUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate-up > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* cards. */
+
+
+/* =========================================
+   TIMELINE REVEAL SEGURO (NO DESAPARECE)
+   ========================================= */
+
+/* Por defecto SIEMPRE visible */
+.timeline-item {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Solo cuando JS añade .js-anim, se prepara para animar */
+html.js-anim .timeline-item {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(5px);
+  transition: opacity .6s ease, transform .6s ease, filter .6s ease;
+  will-change: opacity, transform, filter;
+}
+
+/* Visible cuando entra en viewport */
+html.js-anim .timeline-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Hover pro */
+.timeline-content {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+html.js-anim .timeline-item.is-visible .timeline-content:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.12);
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  html.js-anim .timeline-item {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+

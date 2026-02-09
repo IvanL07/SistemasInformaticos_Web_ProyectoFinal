@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ChatBot IA educativo sobre Sistemas Informáticos." />
+  <title>ChatBot IA | Sistemas Informáticos</title>
+
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav-container">
+      <div class="logo">
+        <span class="logo-icon">💻</span>
+        <span class="logo-text">Sistemas Informáticos</span>
+      </div>
+
+      <ul class="nav-menu">
+        <li><a href="../index.html" class="nav-link">Inicio</a></li>
+        <li><a href="historia.html" class="nav-link">Historia</a></li>
+        <li><a href="curso.html" class="nav-link">Curso BAT</a></li>
+        <li><a href="juego.html" class="nav-link">Juego</a></li>
+        <li><a href="videos.html" class="nav-link">Vídeos</a></li>
+        <li><a href="chatbot.html" class="nav-link " aria-current="page">ChatBot IA</a></li>
+      </ul>
+
+      <button id="themeToggle" class="theme-toggle" aria-label="Cambiar modo">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero page-hero-chatbot">
+      <div class="container hero-animate-up">
+        <h1 class="page-hero-title">ChatBot IA · Sistemas Informáticos</h1>
+        <p class="page-hero-subtitle">
+          Pregunta sobre Windows, Linux, redes, Batch, procesos, comandos y más.
+          (Frontend: respuestas basadas en conocimiento + comandos)
+        </p>
+      </div>
+    </section>
+
+    <section class="chatbot-section">
+      <div class="container ">
+        <div class="chatbot-shell reveal">
+          <aside class="chatbot-side">
+            <div class="chatbot-side-head">
+              <div class="bot-dot"></div>
+              <div>
+                <div class="bot-title">SI-Bot</div>
+                <div class="bot-sub">Asistente educativo</div>
+              </div>
+            </div>
+
+            <div class="chatbot-suggestions">
+              <button class="chip" data-say="¿Qué es el kernel?">Kernel</button>
+              <button class="chip" data-say="Explícame procesos e hilos">Procesos vs hilos</button>
+              <button class="chip" data-say="¿Qué hace netstat?">netstat</button>
+              <button class="chip" data-say="Diferencias Windows vs Linux">Windows vs Linux</button>
+              <button class="chip" data-say="Comandos básicos de Batch">Batch básico</button>
+              <button class="chip" data-say="topics">Ver temas (topics)</button>
+              <button class="chip" data-say="help">Comandos (help)</button>
+            </div>
+
+            <div class="chatbot-tip">
+              Tip: escribe <code>help</code> o <code>topics</code>.
+            </div>
+          </aside>
+
+          <div class="chatbot-main">
+            <div id="chatLog" class="chatbot-log" aria-live="polite"></div>
+
+            <div class="chatbot-input">
+              <input id="chatInput" type="text" placeholder="Escribe tu pregunta… (ej: ¿qué es TCP?)" autocomplete="off" />
+              <button id="chatSend" class="btn-quiz" type="button">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">© 2024 Sistemas Informáticos | Plataforma Educativa</p>
+      <p class="footer-subtext">ChatBot IA (demo frontend) · Respuestas educativas</p>
+    </div>
+  </footer>
+
+  <script src="../main.js"></script>
+  <script src="../chatbot.js"></script>
+</body>
+</html>

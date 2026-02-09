@@ -1,4 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
+  
+
+  document.documentElement.classList.add("js-anim");
+
+  /* =========================================================
+     TIMELINE ANIMATIONS (stagger + reveal + failsafe)
+     ========================================================= */
+  const items = document.querySelectorAll(".timeline .timeline-item");
+
+  if (items.length) {
+    // Stagger (entran una tras otra)
+    items.forEach((el, i) =>
+      el.style.setProperty("--delay", `${i * 70}ms`)
+    );
+
+    // Reveal al hacer scroll
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target); // se anima solo una vez
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    items.forEach((el) => io.observe(el));
+
+    // 🔒 FAILSAFE: si en 800ms no se ha mostrado ninguna, mostramos todas
+    setTimeout(() => {
+      const anyVisible = document.querySelector(
+        ".timeline-item.is-visible"
+      );
+      if (!anyVisible)
+        items.forEach((el) => el.classList.add("is-visible"));
+    }, 800);
+  }
+
+
+  
+
   // =======================
   // QUIZ: abrir modal
   // =======================
@@ -655,4 +698,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
   });
+
+  
 });
